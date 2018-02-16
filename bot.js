@@ -7,6 +7,7 @@ var bot = new Discord.Client();
 
 bot.on("ready", function(message) {
     console.log(" ");
+    bot.user.setGame('Counter March')
 });
 
 bot.on("message", function(message) {
@@ -21,6 +22,11 @@ bot.on("message", function(message) {
         case "door":
             message.delete();
             message.channel.sendMessage("Can someone please open the door?");
+            
+        case "help":
+            message.channel.sendMessage("Help isn't really working right now. Ask Sepulveda.");
+            
+            
         break;
     }
 })
