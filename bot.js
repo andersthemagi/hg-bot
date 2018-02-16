@@ -26,20 +26,18 @@ bot.on("message", function(message) {
             if (args[1] === "vulgar") {
                 var choice = Math.floor(Math.random() * 3 + 1);
                 // CHOOSING WHICH VULGARITY TO USE
-                switch (choice):
-                    case 1:
-                        message.edit("Yo bitch open the door");
-                        break;
-                    case 2:
-                        message.edit("Holy fuck open the door already");
-                        break;
-                    case 3:
-                        message edit("Open the door fuckhead.");
-                        break;
-                    break;
+                if (choice == 1) {
+                    message.edit("Holy fuck open the fucking door? @everyone");
+                }
+                else if (choice == 2) {
+                    message.edit("Can someone open the fucking door? @everyone");
+                }
+                else if (choice == 2) {
+                    message.edit("HEY FUCKHEAD. DOOR. NOW. @everyone");
+                }
                 break;
             }
-            
+            //Otherwise, default behavior is as follows
             message.edit("@everyone Can someone please open the door?");
             break;
             
