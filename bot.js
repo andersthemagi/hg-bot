@@ -35,11 +35,11 @@ bot.on("message", function(message) {
                 else if (choice === 2) {
                     message.edit("HEY FUCKHEAD. DOOR. NOW. @everyone");
                 } */
-                message.edit("HEY FUCKHEAD. DOOR. @everyone");
+                sentMessage.edit("HEY FUCKHEAD. DOOR. @everyone");
                 break;
             }
             //Otherwise, default behavior is as follows
-            message.edit("@everyone Can someone please open the door? @everyone");
+            sentMessage.edit("@everyone Can someone please open the door? @everyone");
             break;
             
         case "help":
