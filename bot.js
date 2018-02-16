@@ -22,24 +22,24 @@ bot.on("message", function(message) {
 
         case "door":
             
+            message.delete(1000);
             //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
-                /* var choice = Math.floor(Math.random() * 3 + 1);
+                var choice = Math.floor(Math.random() * 3 + 1);
                 // CHOOSING WHICH VULGARITY TO USE
                 if (choice === 1) {
-                    message.edit("Holy fuck open the fucking door? @everyone");
+                    message.channel.sendMessage("Holy fuck open the fucking door? @everyone");
                 }
                 else if (choice === 2) {
-                    message.edit("Can someone open the fucking door? @everyone");
+                    message.channel.sendMessage("Can someone open the fucking door? @everyone");
                 }
                 else if (choice === 2) {
-                    message.edit("HEY FUCKHEAD. DOOR. NOW. @everyone");
-                } */
-                sentMessage.edit("HEY FUCKHEAD. DOOR. @everyone");
+                    message.channel.sendMessage("HEY FUCKHEAD. DOOR. NOW. @everyone");
+                }
                 break;
             }
             //Otherwise, default behavior is as follows
-            sentMessage.edit("@everyone Can someone please open the door? @everyone");
+            message.channel.sendMessage("@everyone Can someone please open the door? @everyone");
             break;
             
         case "help":
