@@ -26,13 +26,13 @@ bot.on("message", function(message) {
             if (args[1] === "vulgar") {
                 var choice = Math.floor(Math.random() * 3 + 1);
                 // CHOOSING WHICH VULGARITY TO USE
-                if (choice == 1) {
+                if (choice === 1) {
                     message.edit("Holy fuck open the fucking door? @everyone");
                 }
-                else if (choice == 2) {
+                else if (choice === 2) {
                     message.edit("Can someone open the fucking door? @everyone");
                 }
-                else if (choice == 2) {
+                else if (choice === 2) {
                     message.edit("HEY FUCKHEAD. DOOR. NOW. @everyone");
                 }
                 break;
