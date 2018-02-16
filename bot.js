@@ -46,7 +46,21 @@ bot.on("message", function(message) {
             
         case "help":
             message.delete(1000);
-            message.author.sendMessage("Help isn't really working right now. Ask Sepulveda.");
+            
+            message.author.sendMessage("```md
+                                       # HG BOT - LIST OF COMMANDS 
+                                       
+                                       # COMMAND PREFIX = >
+                                       
+                                       ## >door 
+                                           * lets the channel know you want the door open
+                                       
+                                       ## >door vulgar
+                                           * verbally abuses the channel to open the door
+                                       
+                                       ## >help
+                                           * displays the command list and any pertinent information regarding the Honor guard bot
+                                       ```");
             break;
             
     }
