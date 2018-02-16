@@ -46,5 +46,5 @@ bot.on("message", function(message) {
             message.author.sendMessage("Help is currently not working. Ask Sepulveda.");
             break;
     }
-}
+});
 bot.login(process.env.BOT_TOKEN);
