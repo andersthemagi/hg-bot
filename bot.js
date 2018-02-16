@@ -47,7 +47,9 @@ bot.on("message", function(message) {
             message.author.sendMessage("Help isn't really working right now. Ask Sepulveda.");
             break;
             
-        
+        case "say":
+            message.edit("I'm saying things through your mouth now. It's like you're my puppet!");
+            break;
     }
 })
 
