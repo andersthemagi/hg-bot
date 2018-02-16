@@ -24,7 +24,7 @@ bot.on("message", function(message) {
             
             //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
-                var choice = Math.floor(Math.random() * 3 + 1);
+                /* var choice = Math.floor(Math.random() * 3 + 1);
                 // CHOOSING WHICH VULGARITY TO USE
                 if (choice === 1) {
                     message.edit("Holy fuck open the fucking door? @everyone");
@@ -34,11 +34,12 @@ bot.on("message", function(message) {
                 }
                 else if (choice === 2) {
                     message.edit("HEY FUCKHEAD. DOOR. NOW. @everyone");
-                }
+                } */
+                message.edit("HEY FUCKHEAD. DOOR. @everyone");
                 break;
             }
             //Otherwise, default behavior is as follows
-            message.edit("@everyone Can someone please open the door?");
+            message.edit("@everyone Can someone please open the door? @everyone");
             break;
             
         case "help":
