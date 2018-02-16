@@ -19,7 +19,8 @@ bot.on("message", function(message) {
     switch(args[0].toLowerCase()) {
 
         case "door":
-            message.channel.sendMessage("Can someone please open the door?")
+            message.delete(1000);
+            message.channel.sendMessage("Can someone please open the door?");
         break;
     }
 })
