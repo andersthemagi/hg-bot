@@ -25,7 +25,9 @@ bot.on("message", function(message) {
             message.delete(1000);
             //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
+                message.channel.sendMessage("WE MADE IT PAST THE ARGUMENT CHECKER");
                 var choice = Math.floor(Math.random() * 3 + 1);
+                
                 // CHOOSING WHICH VULGARITY TO USE
                 if (choice === 1) {
                     message.channel.sendMessage("Holy fuck open the fucking door? @everyone");
@@ -39,7 +41,7 @@ bot.on("message", function(message) {
                 break;
             }
             //Otherwise, default behavior is as follows
-            message.channel.sendMessage("@everyone Can someone please open the door? @everyone");
+            message.channel.sendMessage("Can someone please open the door? @everyone");
             break;
             
         case "help":
