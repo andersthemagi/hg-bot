@@ -21,17 +21,30 @@ bot.on("message", function(message) {
     switch(args[0].toLowerCase()) {
 
         case "door":
-            message.delete(100);
             
+            //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
-                message.channel.sendMessage("Yo bitch open the fucking door");
+                var choice = Math.floor(Math.random() * 3 + 1);
+                // CHOOSING WHICH VULGARITY TO USE
+                switch (choice):
+                    case 1:
+                        message.edit("Yo bitch open the door");
+                        break;
+                    case 2:
+                        message.edit("Holy fuck open the door already");
+                        break;
+                    case 3:
+                        message edit("Open the door fuckhead.");
+                        break;
+                    break;
                 break;
             }
             
-            message.channel.sendMessage("Can someone please open the door?");
+            message.edit("@everyone Can someone please open the door?");
             break;
             
         case "help":
+            message.delete(1000);
             message.author.sendMessage("Help isn't really working right now. Ask Sepulveda.");
             break;
             
