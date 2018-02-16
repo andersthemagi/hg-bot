@@ -25,7 +25,7 @@ bot.on("message", function(message) {
             message.delete(1000);
             //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
-                message.channel.sendMessage("WE MADE IT PAST THE ARGUMENT CHECKER");
+
                 var choice = Math.floor(Math.random() * 3 + 1);
                 
                 // CHOOSING WHICH VULGARITY TO USE
@@ -49,9 +49,6 @@ bot.on("message", function(message) {
             message.author.sendMessage("Help isn't really working right now. Ask Sepulveda.");
             break;
             
-        case "say":
-            message.edit("I'm saying things through your mouth now. It's like you're my puppet!");
-            break;
     }
 })
 
