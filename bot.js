@@ -7,13 +7,13 @@ var bot = new Discord.Client();
 
 bot.on("ready", function(message) {
     console.log(" ");
-    bot.user.setGame('Counter March')
+    bot.user.setGame("Counter March")
 });
 
 bot.on("message", function(message) {
-    if (message.author.equals(bot.user)) return;
+    if (message.author.equals(bot.user)) {return;}
 
-    if (!message.content.startsWith(PREFIX))return;
+    if (!message.content.startsWith(PREFIX)) {return;}
 
     var args = message.content.substring(PREFIX.length).split(" ");
     var author = message.author;
@@ -21,13 +21,11 @@ bot.on("message", function(message) {
     switch(args[0].toLowerCase()) {
 
         case "door":
-            
             message.delete(1000);
             //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
 
                 var choice = Math.floor(Math.random() * 3 + 1);
-                
                 // CHOOSING WHICH VULGARITY TO USE
                 if (choice === 1) {
                     message.channel.sendMessage("Holy fuck open the fucking door? @everyone");
@@ -43,11 +41,10 @@ bot.on("message", function(message) {
             //Otherwise, default behavior is as follows
             message.channel.sendMessage("Can someone please open the door? @everyone");
             break;
-            
         case "help":
             message.delete(1000);
-            
             message.author.sendMessage("Help is currently not working. Ask Sepulveda.");
             break;
-
+    }
+}
 bot.login(process.env.BOT_TOKEN);
