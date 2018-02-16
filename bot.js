@@ -21,13 +21,20 @@ bot.on("message", function(message) {
 
         case "door":
             message.delete();
+            
+            if (args[1] === "vulgar") {
+                message.channel.sendMessage("Yo bitch open the fucking door");
+                break;
+            }
+            
             message.channel.sendMessage("Can someone please open the door?");
+            break;
             
         case "help":
             message.channel.sendMessage("Help isn't really working right now. Ask Sepulveda.");
+            break;
             
-            
-        break;
+        
     }
 })
 
