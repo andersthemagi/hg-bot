@@ -16,6 +16,7 @@ bot.on("message", function(message) {
     if (!message.content.startsWith(PREFIX))return;
 
     var args = message.content.substring(PREFIX.length).split(" ");
+    var author = message.author;
 
     switch(args[0].toLowerCase()) {
 
@@ -31,7 +32,7 @@ bot.on("message", function(message) {
             break;
             
         case "help":
-            message.channel.sendMessage("Help isn't really working right now. Ask Sepulveda.");
+            message.author.sendMessage("Help isn't really working right now. Ask Sepulveda.");
             break;
             
         
