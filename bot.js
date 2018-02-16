@@ -47,30 +47,7 @@ bot.on("message", function(message) {
         case "help":
             message.delete(1000);
             
-            message.author.sendMessage({embed: {
-                color: 3447003,
-                author: {
-                    name: client.user.username,
-                    icon_url: client.user.avatarURL
-                },
-                title: "HGBot Help Menu",
-                description: "Here is a list of commands for the Honor Guard bot. Note that all commands begin with the prefix '>'.",
-                fields: [{ 
-                    name: ">door",
-                    value: "Lets the channel know you need the door open."
-                    },
-                    {
-                    name: ">door vulgar",
-                    value: "Verbally abuses the chat on the fact you need the door open."
-                    },
-                    {
-                        name: ">help",
-                        value: "Displays the help Menu, which is what you're looking at right now."
-                    }],
-                timestamp: new Date(),
-            }
-            
-            });
+            message.author.sendMessage("Help is currently not working. Ask Sepulveda.");
             break;
 
 bot.login(process.env.BOT_TOKEN);
