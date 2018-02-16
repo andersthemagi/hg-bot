@@ -20,7 +20,7 @@ bot.on("message", function(message) {
     switch(args[0].toLowerCase()) {
 
         case "door":
-            message.delete();
+            message.delete(100);
             
             if (args[1] === "vulgar") {
                 message.channel.sendMessage("Yo bitch open the fucking door");
