@@ -2,7 +2,7 @@
   "name": "package",
   "version": "1.0.0",
   "description": "Test bot for small server",
-  "main": "index.js",
+  "main": "bot.js",
   "dependencies": {
     "discord.io": "^2.5.3",
     "discord.js": "^11.3.0",
