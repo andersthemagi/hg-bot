@@ -65,14 +65,14 @@ bot.on("message", function(message) {
         case "help":
             message.delete(1000);
             
-            var embed = new Discord.RichEmbed();
-            embed.addTitle("Honor Guard Bot v1.0.2");
-            embed.addDescription("Here is a list of all the commands available with the Honor Guard Bot. Note that all commands are given with a prefix of '>' before the command WITH NO SPACES");
-            embed.setAuthor("Andres Sepulveda");
-            embed.addField(">command", "Tells the bot to say a random command from either the AFMAN 33-2203 or the MCO P5060.20 Appendix A", false);
-            embed.addField(">door", "Lets the channel know you would like the door opened. If you use the command '>door vulgar', the bot will verbally abuse the server in order to let them know someone needs the door open.", false);
-            embed.addField(">help", "Displays this list. List is sent through Direct Messages (DM)", false);
-            embed.setColor("NAVY");
+            var embed = new Discord.RichEmbed()
+	    	.addTitle("Honor Guard Bot v1.0.2")
+            	.addDescription("Here is a list of all the commands available with the Honor Guard Bot. Note that all commands are given with a prefix of '>' before the command WITH NO SPACES")
+            	.setAuthor("Andres Sepulveda")
+            	.addField(">command", "Tells the bot to say a random command from either the AFMAN 33-2203 or the MCO P5060.20 Appendix A", false)
+            	.addField(">door", "Lets the channel know you would like the door opened. If you use the command '>door vulgar', the bot will verbally abuse the server in order to let them know someone needs the door open.", false)
+            	.addField(">help", "Displays this list. List is sent through Direct Messages (DM)", false)
+            	.setColor("NAVY")
             
             message.author.sendMessage({embed});
             break;
