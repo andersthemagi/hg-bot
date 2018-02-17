@@ -158,10 +158,9 @@ bot.on("message", function(message) {
 			count++;
 		    })
 		    .catch(() => {
-			message.channel.send("All cadets present and accounted for, sick at home.");
+			message.channel.send("Accountability is" + count + "of" + count + ", present or accounted for.");
 		    });
 		    });
-		    message.channel.send("Accountability is" + count + "of" + count + ", present or accounted for.");
 		    break;
 		    
     }
