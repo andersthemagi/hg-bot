@@ -157,7 +157,7 @@ bot.on("message", function(message) {
 			    errors: ['time'] 
 		    })
 		    .then(collected => {
-    			message.channel.sendMessage(`Accountability is ${collected.size} of ${message.guild.members.size}, present or accounted for.`);
+    			message.channel.sendMessage(`Accountability is ${collected.size}, present or accounted for.`);
 			});
 		    break;
 	}
