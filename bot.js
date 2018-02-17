@@ -151,10 +151,15 @@ bot.on("message", function(message) {
 		    const filter = m => m.content.startsWith('here');
 
 		    message.channel.send("Report your accountability!");
+		    const lastMsgID = message.channel.lastMessageID;
 		    const collector = message.channel.createMessageCollector(filter, {time: 15000});
 		    collector.on('collect', m => console.log("Hi"));
 		    collector.on('end', collected => message.channel.send(`Accountability is ${collected.size} present for practice.`));
 		    
+		    const messages = message.channel.fetchMessages({ limit: 50, after: lastMsgID })
+		    .then(messages => console.log(`Received ${messages.size} messages`))
+		    .catch(console.error);
+		    message.channel.bulkDelete(messages, false);
 		    break;
 	}
 });
