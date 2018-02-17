@@ -157,7 +157,7 @@ bot.on("message", function(message) {
 		    .then(collected =>
 			  console.log(collected.size))
 		    .catch(collected => 
-			   message.channel.sendMessage('Accountability is ${collected.size} of ${collected.size}, present or accounted for.));
+			   message.channel.sendMessage("Accountability is ${collected.size} of ${collected.size}, present or accounted for."));
     		    break;
 	}
 });
