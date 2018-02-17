@@ -7,7 +7,7 @@ var bot = new Discord.Client();
 
 bot.on("ready", function(message) {
     console.log(" ");
-    bot.user.setGame("Counter March")
+    bot.user.setGame("Counter March");
 });
 
 bot.on("message", function(message) {
@@ -16,7 +16,6 @@ bot.on("message", function(message) {
     if (!message.content.startsWith(PREFIX)) {return;}
 
     var args = message.content.substring(PREFIX.length).split(" ");
-    var author = message.author;
 
     switch(args[0].toLowerCase()) {
         
