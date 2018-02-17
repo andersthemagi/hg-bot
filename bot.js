@@ -33,27 +33,27 @@ bot.on("message", function(message) {
                 choice = Math.floor(Math.random() * 6 + 1);
                 // CHOOSING WHICH VULGARITY TO USE
                 if (choice === 1) {
-                    message.channel.sendMessage("Holy fuck open the fucking door? @everyone");
+                    message.channel.send("Holy fuck open the fucking door? @everyone");
                 }
                 else if (choice === 2) {
-                    message.channel.sendMessage("Can someone open the fucking door? @everyone");
+                    message.channel.send("Can someone open the fucking door? @everyone");
                 }
                 else if (choice === 3) {
-                    message.channel.sendMessage("HEY FUCKHEAD. DOOR. NOW. @everyone");
+                    message.channel.send("HEY FUCKHEAD. DOOR. NOW. @everyone");
                 }
                 else if (choice === 4) {
-                    message.channel.sendMessage("COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone");
+                    message.channel.send("COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone");
                 }
                 else if (choice === 5) {
-                    message.channel.sendMessage("I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone");
+                    message.channel.send("I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone");
                 }
                 else if (choice === 6) {
-                    message.channel.sendMessage("Fuck. Shit. Ass. Shit. Fuck. Door. @everyone");
+                    message.channel.send("Fuck. Shit. Ass. Shit. Fuck. Door. @everyone");
                 }
                 break;
             }
             //Otherwise, default behavior is as follows
-            message.channel.sendMessage("Can someone please open the door? @everyone");
+            message.channel.send("Can someone please open the door? @everyone");
             break;
             
             
@@ -96,52 +96,52 @@ bot.on("message", function(message) {
             choice = Math.floor(Math.random() * 16 + 1);
             //Chooses which command to say based off the 
             if (choice === 1) {
-                message.channel.sendMessage("Column Left, March!");
+                message.channel.send("Column Left, March!");
             }
             if (choice === 2) {
-                message.channel.sendMessage("Present, Arms!");
+                message.channel.send("Present, Arms!");
             }
             if (choice === 3) {
-                message.channel.sendMessage("Right Flank, March!");
+                message.channel.send("Right Flank, March!");
             }
             if (choice === 4) {
-                message.channel.sendMessage("About, Face!");
+                message.channel.send("About, Face!");
             }
             if (choice === 5) {
-                message.channel.sendMessage("Parade, Rest!");
+                message.channel.send("Parade, Rest!");
             }
             if (choice === 6) {
-                message.channel.sendMessage("Flight, 'Tench Hut!");
+                message.channel.send("Flight, 'Tench Hut!");
             }
             if (choice === 7) {
-                message.channel.sendMessage("Forward, March!");
+                message.channel.send("Forward, March!");
             }
             if (choice === 8) {
-                message.channel.sendMessage("To the Rear, March!");
+                message.channel.send("To the Rear, March!");
             }
             if (choice === 9) {
-                message.channel.sendMessage("Counter, March!");
+                message.channel.send("Counter, March!");
             }
             if (choice === 10) {
-                message.channel.sendMessage("Incline 12 degrees, to the Left!");
+                message.channel.send("Incline 12 degrees, to the Left!");
             }
             if (choice === 11) {
-                message.channel.sendMessage("Right Shoulder, Arms!");
+                message.channel.send("Right Shoulder, Arms!");
             }
             if (choice === 12) {
-                message.channel.sendMessage("Port, Arms!");
+                message.channel.send("Port, Arms!");
             }
             if (choice === 13) {
-                message.channel.sendMessage("Order, Arms!");
+                message.channel.send("Order, Arms!");
             }
             if (choice === 14) {
-                message.channel.sendMessage("Column of Files from the Right, Column Right, March!");
+                message.channel.send("Column of Files from the Right, Column Right, March!");
             }
             if (choice === 15) {
-                message.channel.sendMessage("Trail, Arms!");
+                message.channel.send("Trail, Arms!");
             }
             if (choice === 16) {
-                message.channel.sendMessage("Flight, Halt!");
+                message.channel.send("Flight, Halt!");
             }
             break;
 		    
@@ -150,14 +150,14 @@ bot.on("message", function(message) {
 		    
 		    const filter = m => m.content.startsWith('here');
 
-		    message.channel.sendMessage("Report your accountability!");
+		    message.channel.send("Report your accountability!");
 		    message.channel.awaitMessages(filter, { 
 			    max: 200,
 			    time: 30000,
 			    errors: ['time'] 
 		    })
 		    .then(collected => {
-    			message.channel.sendMessage(`Accountability is ${collected.size}, present or accounted for.`);
+    			message.channel.send(`Accountability is ${collected.size}, present or accounted for.`);
 			});
 		    break;
 	}
