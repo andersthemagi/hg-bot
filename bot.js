@@ -153,7 +153,7 @@ bot.on("message", function(message) {
 		    message.channel.sendMessage("Report your accountability!");
 		    message.channel.awaitMessages(filter, { 
 			    max: 200,
-			    time: 120000,
+			    time: 30000,
 			    errors: ['time'] 
 		    })
 		    .then(collected => {
