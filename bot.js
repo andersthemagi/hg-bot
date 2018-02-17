@@ -16,7 +16,7 @@ bot.on("message", function(message) {
     if (!message.content.startsWith(PREFIX)) {return;}
 
     var args = message.content.substring(PREFIX.length).split(" ");
-
+		var choice = Math.floor(Math.random());
     switch(args[0].toLowerCase()) {
         
         /*
@@ -30,7 +30,7 @@ bot.on("message", function(message) {
             //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
 
-                var choice = Math.floor(Math.random() * 6 + 1);
+                choice = Math.floor(Math.random() * 6 + 1);
                 // CHOOSING WHICH VULGARITY TO USE
                 if (choice === 1) {
                     message.channel.sendMessage("Holy fuck open the fucking door? @everyone");
@@ -82,7 +82,7 @@ bot.on("message", function(message) {
             - Displays a random command from the AFMAN 33-2203 and the MCO P5060.20 Appendix A
         */
         case "command":
-            var choice = Math.floor(Math.random() * 16 + 1);
+            choice = Math.floor(Math.random() * 16 + 1);
             //Chooses which command to say based off the 
             if (choice === 1) {
                 message.channel.sendMessage("Column Left, March!");
