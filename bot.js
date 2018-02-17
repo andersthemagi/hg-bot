@@ -154,7 +154,7 @@ bot.on("message", function(message) {
 			time: 120000,
 			errors: ['time'],
 		    })
-		    .then((collected)) => {
+		    .then((collected) => {
 			count++;
 		    })
 		    .catch(() => {
