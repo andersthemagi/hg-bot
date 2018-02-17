@@ -151,14 +151,14 @@ bot.on("message", function(message) {
 		    const filter = m => m.content.startsWith('here');
 		    message.channel.sendMessage("Made it past the filter creation");
 		    message.channel.sendMessage("Report your accountability!");
-		    channel.awaitMessages(filter, {
+		    /* channel.awaitMessages(filter, { 
 			    max: 200,
 			    time: 120000,
 			    errors: ['time'] 
 		    })
-		    .then(collected=>{
+		    .then(collected => {
     			message.channel.sendMessage(`Accountability is ${collected.size} of ${message.guild.members.size}, present or accounted for.`);
-			});
+			}); */
 		    message.channel.sendMessage("Made it to the end!");
 		    break;
 	}
