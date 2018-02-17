@@ -144,7 +144,26 @@ bot.on("message", function(message) {
                 message.channel.sendMessage("Flight, Halt!");
             }
             break;
-            
+		    
+		    
+	    case "report":
+		    var count = 0;
+		    message.channel.send("Squadron Commanders, report your accountability! You will have 2 minutes to do this. Timehack ready! MOVE!").then(() => {
+			    message.channel.awaitMessages(response => response.content == 'here', {
+			max: 100,
+			time: 120000,
+			errors: ['time'],
+		    })
+		    .then((collected)) => {
+			count++;
+		    })
+		    .catch(() => {
+			message.channel.send("All cadets present and accounted for, sick at home.");
+		    });
+		    });
+		    message.channel.send("Accountability is" + count + "of" + count + ", present or accounted for.");
+		    break;
+		    
     }
 });
 bot.login(process.env.BOT_TOKEN);
