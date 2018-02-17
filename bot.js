@@ -155,7 +155,7 @@ bot.on("message", function(message) {
 			    errors: ['time'] 
 		    })
 		    .then(collected =>
-			  console.log(collected.size);
+			  console.log(collected.size));
 		    message.channel.sendMessage("Accountability is " + collected.size + " present for practice. ");
 		    break;
 	}
