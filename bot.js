@@ -74,7 +74,7 @@ bot.on("message", function(message) {
             	.addField(">help", "Displays this list. List is sent through Direct Messages (DM)")
             	.setColor("NAVY")
             
-            message.author.sendEmbed({embed});
+            message.author.send(embed, RichEmbed);
             break;
         
         /*
