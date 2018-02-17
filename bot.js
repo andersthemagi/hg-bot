@@ -151,14 +151,10 @@ bot.on("message", function(message) {
 		    const filter = m => m.content.startsWith('here');
 
 		    message.channel.send("Report your accountability!");
-		    message.channel.awaitMessages(filter, { 
-			    max: 200,
-			    time: 30000,
-			    errors: ['time'] 
-		    })
-		    .then(collected => {
-    			message.channel.send(`Accountability is ${collected.size}, present or accounted for.`);
-			});
+		    const collector = channel.createMessageCollector(filter, {time: 15000});
+		    collector.on('collect', m => console.log(`Collected ${m.content}`));
+		    collector.on('end', collected => message.channel.send(`Accountability is ${collected.size} present for practice.`));
+		    
 		    break;
 	}
 });
