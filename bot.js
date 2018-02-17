@@ -155,10 +155,9 @@ bot.on("message", function(message) {
 			    errors: ['time'] 
 		    })
 		    .then(collected =>
-			  console.log(collected.size))
-		    .catch(collected => 
-			   message.channel.sendMessage("Accountability is ${collected.size} of ${collected.size}, present or accounted for."));
-    		    break;
+			  console.log(collected.size);
+		    message.channel.sendMessage("Accountability is " + collected.size + " present for practice. ");
+		    break;
 	}
 });
 bot.login(process.env.BOT_TOKEN);
