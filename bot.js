@@ -159,7 +159,7 @@ bot.on("message", function(message) {
 		    const messages = message.channel.fetchMessages({ limit: 50, after: lastMsgID })
 		    .then(messages => console.log(`Received ${messages.size} messages`))
 		    .catch(console.error);
-		    message.channel.bulkDelete(messages, false);
+		    messages.deleteAll();
 		    break;
 	}
 });
