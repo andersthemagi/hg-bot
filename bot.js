@@ -154,9 +154,9 @@ bot.on("message", function(message) {
 			    time: 120000,
 			    errors: ['time'] 
 		    })
-		    .then(collected =>
+		    .then(collected => {
 			  console.log(collected.size));
-		    message.channel.sendMessage("Accountability is " + collected.size + " present for practice. ");
+		    message.channel.sendMessage("Accountability is " + collected.size + " present for practice. ")};
 		    break;
 	}
 });
