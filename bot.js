@@ -152,7 +152,7 @@ bot.on("message", function(message) {
 
 		    message.channel.send("Report your accountability!");
 		    const lastMsgID = message.channel.lastMessageID;
-		    const collector = message.channel.createMessageCollector(filter, {time: 15000});
+		    const collector = message.channel.createMessageCollector(filter, {time: 30000});
 		    collector.on('collect', m => console.log("Hi"));
 		    collector.on('end', collected => message.channel.send(`Accountability is ${collected.size} present for practice.`));
 		    
