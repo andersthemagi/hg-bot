@@ -156,9 +156,7 @@ bot.on("message", function(message) {
 		    collector.on('collect', m => console.log("Hi"));
 		    collector.on('end', collected => message.channel.send(`Accountability is ${collected.size} present for practice.`));
 		    
-		    const msgToDel = message.channel.fetchMessages({ limit: 50, after: lastMsgID })
-		    .then(messages => console.log(`Received ${messages.size} messages`))
-		    .catch(console.error);
+		    const msgToDel = message.channel.fetchMessages({ limit: 50, after: lastMsgID }).then(messages => console.log(`Received ${messages.size} messages.`)).catch(console.error);
 		    msgToDel.deleteAll();
 		    break;
 	}
