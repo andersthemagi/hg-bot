@@ -147,22 +147,18 @@ bot.on("message", function(message) {
 		    
 		    
 	    case "report":
-		    var count = 0;
-		    message.channel.send("Squadron Commanders, report your accountability! You will have 2 minutes to do this. Timehack ready! MOVE!").then(() => {
-			    message.channel.awaitMessages(response => response.content == 'here', {
-			max: 100,
-			time: 120000,
-			errors: ['time'],
+		    const filter = m => m.content.startsWith('here');
+		    message.channel.sendMessage("Report your accountability!");
+		    channel.awaitMessages(filter, {
+			    max: 200,
+			    time: 120000,
+			    errors: ['time'] 
 		    })
-		    .then((collected) => {
-			count++;
-		    })
-		    .catch(() => {
-			message.channel.send("Accountability is" + count + "of" + count + ", present or accounted for.");
-		    });
-		    });
-		    break;
-		    
-    }
+		    .then(collected =>
+			  console.log(collected.size))
+		    .catch(collected => 
+			   message.channel.sendMessage('Accountability is ${collected.size} of ${collected.size}, present or accounted for.));
+    		    break;
+	}
 });
 bot.login(process.env.BOT_TOKEN);
