@@ -82,7 +82,11 @@ bot.on("message", function(message) {
     		{
       			"name": ">help",
       			"value": "Displays this list. List is sent through Direct Message to the user who requests it."
-    		}
+    		},
+		{
+			"name": ">report",
+			"value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, even if they are duplicates. After 30 seconds, the bot will tally up and send out how many people are here."
+		}
   		]
 		};
 	    message.author.send({ embed });
@@ -145,7 +149,10 @@ bot.on("message", function(message) {
             }
             break;
 		    
-		    
+	    /*
+	    	>report
+	    	- Gets accountability based off of who says they're here in the chat within 30 seconds of the report message being sent in the chat. 
+	    */
 	    case "report":
 		    
 		    const filter = m => m.content.startsWith('here');
@@ -156,7 +163,7 @@ bot.on("message", function(message) {
 		    collector.on('collect', m => console.log("Hi"));
 		    collector.on('end', collected => message.channel.send(`Accountability is ${collected.size} present for practice.`));
 		    
-		    //message.channel.fetchMessages({ limit: 50, after: lastMsgID }).then(messages => console.log(`Received ${messages.size} messages.`)).catch(console.error).deleteAll();
+		    // message.channel.fetchMessages({ limit: 50, after: lastMsgID }).then(messages => console.log(`Received ${messages.size} messages.`)).catch(console.error).deleteAll();
 		    break;
 	}
 });
