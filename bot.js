@@ -157,7 +157,7 @@ bot.on("message", function(message) {
 		    var index = 0;
 		    const filter = m => m.content.toLowerCase().startsWith('>here');
 
-		    message.channel.send("Report your accountability!");
+		    message.channel.send("@everyone Report your accountability! Type '>here' to be counted!");
 		    
 		    message.channel.awaitMessages(filter, {
 			    max: 200,
