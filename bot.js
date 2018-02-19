@@ -155,7 +155,7 @@ bot.on("message", function(message) {
 	    */
 	    case "report":
 		    var index = 0;
-		    const filter = m => m.content.toLowerCase().startsWith('>here');
+		    const filter = m => m.content.startsWith('>here');
 
 		    message.channel.send("@everyone Report your accountability! Type '>here' to be counted!");
 		    
