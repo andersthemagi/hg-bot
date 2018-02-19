@@ -161,8 +161,11 @@ bot.on("message", function(message) {
 			    if (uidHolder.includes(id) || !m.content.startsWith('here')) {
 				    return false;
 			    }
-			    uidHolder.push(id);
-			    return true;
+			    else {
+				 uidHolder.push(id);
+			    	return true;   
+			    }
+			    
 		    };
 
 		    message.channel.send("@everyone Report your accountability! Type '>here' to be counted!");
