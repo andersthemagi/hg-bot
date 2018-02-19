@@ -155,7 +155,15 @@ bot.on("message", function(message) {
 	    */
 	    case "report":
 		    var index = 0;
-		    const filter = m => m.content.startsWith('>here');
+		    let uidHolder = [];
+		    const filter = m => {
+			    let id = m.author.id;
+			    if (uidHolder.includes(id) || !m.content.startsWith('here')) {
+				    return false;
+			    }
+			    uidHolder.push(id);
+			    return true;
+		    };
 
 		    message.channel.send("@everyone Report your accountability! Type '>here' to be counted!");
 		    
@@ -170,7 +178,15 @@ bot.on("message", function(message) {
 		    .catch(collected => {
 			    message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
 		    });
-		    
+		    message.channel.send(`Members who are present:`);
+		    for (index = 0; index < uidHolder; index++) {
+			   client.fetchUser(uidHolder[index])
+			    .then(user => {
+				   message.channel.send(user);
+			   }, rejection => {
+				   message.channel.send("USER LOOKUP ERROR");
+			   });
+		    }
 		    break;
 	}
 });
