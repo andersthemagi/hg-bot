@@ -169,10 +169,6 @@ bot.on("message", function(message) {
 		    })
 		    .catch(collected => {
 			    message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
-			    var collectArray = Array.from(collected.values());
-			    for (index = 0; index < collected.size; index++) {
-				message.channel.send(collectArray[index]);
-			    }
 		    });
 		    
 		    break;
