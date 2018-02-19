@@ -154,14 +154,14 @@ bot.on("message", function(message) {
 	    	- Gets accountability based off of who says they're here in the chat within 30 seconds of the report message being sent in the chat. 
 	    */
 	    case "report":
-		    
-		    const filter = m => m.content.toLowerCase().startsWith('here');
+		    var index = 0;
+		    const filter = m => m.content.toLowerCase().startsWith('>here');
 
 		    message.channel.send("Report your accountability!");
 		    
 		    message.channel.awaitMessages(filter, {
 			    max: 200,
-			    time: 30000,
+			    time: 45000,
 			    errors: ['time']
 		    })
 		    .then(collected => {
@@ -169,9 +169,12 @@ bot.on("message", function(message) {
 		    })
 		    .catch(collected => {
 			    message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
+			    var collectArray = collected.array();
+			    for (index = 0; index < collected.size; index++) {
+				message.channel.send(collectArray[index]);
+			    }
 		    });
 		    
-		    // message.channel.fetchMessages({ limit: 50, after: lastMsgID }).then(messages => console.log(`Received ${messages.size} messages.`)).catch(console.error).deleteAll();
 		    break;
 	}
 });
