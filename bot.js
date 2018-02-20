@@ -125,10 +125,11 @@ bot.on("message", function(message) {
         >fde [af/full] [# of commands]
         */
         case "fde":
+            var commands = 0;
+            var choice = 0;
             try {
-                var commands = parseInt(args[2]);
-                var choice = 0;
-            }catch(ParseException e) {
+                commands = parseInt(args[2]);
+            }catch(ParseException) {
                 message.channel.send("ERROR, NOT A NUMBER");
             }
 
