@@ -134,13 +134,13 @@ bot.on("message", function(message) {
             }
 
             var suggestedTime = 0.5 * commands;
-            message.channel.send(`Suggested Time for FDE: ${suggestedTime}`);
+            message.channel.send(`Suggested Time for FDE: ${suggestedTime}minutes.`);
             message.channel.send("==============================================");
 
             //AF drill and ceremonies only
             if (args[1] == "af") {
                 for (i = 0; i <= commands; i++) {
-                    choice = Math.floor(Math.Random * afmanCommands.length);
+                    choice = Math.floor(Math.Random() * afmanCommands.length);
                     message.channel.send(afmanCommands[choice]);
                 }
                 break;
