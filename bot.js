@@ -142,7 +142,7 @@ bot.on("message", function(message) {
                 "author": "Honor Guard Bot",
                 "description": "==========================",
                 "color": "#5D8AA8",
-                "fields" []
+                "fields": []
             };
 
             //AF drill and ceremonies only
