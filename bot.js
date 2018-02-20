@@ -1,3 +1,5 @@
+"use strict";
+
 const Discord = require("discord.js");
 
 const PREFIX = ">";
@@ -126,7 +128,7 @@ bot.on("message", function(message) {
         */
         case "fde":
             var commands = 0;
-            var choice = 0;
+            choice = 0;
             try {
                 commands = parseInt(args[2]);
             }catch(ParseException) {
@@ -137,23 +139,22 @@ bot.on("message", function(message) {
             message.channel.send(" ");
             var suggestedTime = 0.5 * commands;
             
-            const embed = {
+            const fdeEmbed = {
                 "title": "Auto Generated FDE",
                 "author": "Honor Guard Bot",
-                "description": "==========================",
+              	"description": `Suggested Time: ${suggestedTime} minutes`,
                 "color": "#5D8AA8",
                 "fields": []
             };
 
             //AF drill and ceremonies only
-            var index = 0;
-            
+        		var i = 0;
             if (args[1] == "af") {
-                for (index = 0; index <= commands; index++) {
+                for (i = 0; i <= commands; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
-                    embed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
+                    fdeEmbed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
                 }
-                message.channel.send({embed});
+                message.channel.send({fdeEmbed});
             }
             else if (args[1] == "full") {
                 break;
