@@ -146,7 +146,7 @@ bot.on("message", function(message) {
             if (args[1] == "af") {
                 for (i = 0; i <= commands; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
-                    fdeEmbed.addField(afmanCommands[choice], " ");
+                    fdeEmbed.addField(afmanCommands[choice], " ", false);
                 }
                 message.channel.send({fdeEmbed});
             }
