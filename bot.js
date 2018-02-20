@@ -137,7 +137,7 @@ bot.on("message", function(message) {
             message.channel.send(" ");
             var suggestedTime = 0.5 * commands;
             
-            const fdeEmbed = {
+            const embed = {
                 "title": "Auto Generated FDE",
                 "author": "Honor Guard Bot",
                 "description": "==========================",
@@ -149,9 +149,9 @@ bot.on("message", function(message) {
             if (args[1] == "af") {
                 for (i = 0; i <= commands; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
-                    fdeEmbed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
+                    embed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
                 }
-                message.channel.send({fdeEmbed});
+                message.channel.send({embed});
             }
             else if (args[1] == "full") {
                 break;
