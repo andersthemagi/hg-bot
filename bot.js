@@ -96,7 +96,7 @@ bot.on("message", function(message) {
 
         case "help":
         message.delete(1000);
-        const embed = {
+        var embed = {
             "title": "Honor Guard Bot Help ",
             "description": "Here is a list of commands and pertinent information regarding the Honor Guard Bot.",
             "color": 12345,
@@ -139,7 +139,7 @@ bot.on("message", function(message) {
             message.channel.send(" ");
             var suggestedTime = 0.5 * commands;
             
-            const fdeEmbed = {
+            var embed = {
                 "title": "Auto Generated FDE",
                 "author": "Honor Guard Bot",
               	"description": `Suggested Time: ${suggestedTime} minutes`,
@@ -152,9 +152,9 @@ bot.on("message", function(message) {
             if (args[1] == "af") {
                 for (i = 0; i <= commands; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
-                    fdeEmbed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
+                    embed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
                 }
-                message.channel.send({fdeEmbed});
+                message.channel.send({embed});
             }
             else if (args[1] == "full") {
                 break;
