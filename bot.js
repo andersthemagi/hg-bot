@@ -146,8 +146,10 @@ bot.on("message", function(message) {
             };
 
             //AF drill and ceremonies only
+            var index = 0;
+            
             if (args[1] == "af") {
-                for (i = 0; i <= commands; i++) {
+                for (index = 0; index <= commands; index++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
                     embed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
                 }
