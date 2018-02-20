@@ -141,7 +141,7 @@ bot.on("message", function(message) {
             //AF drill and ceremonies only
             if (args[1] == "af") {
                 for (i = 0; i <= commands; i++) {
-                    choice = Math.floor(Math.Random() * afmanCommands.length);
+                    choice = Math.floor(Math.random() * afmanCommands.length);
                     message.channel.send(afmanCommands[choice]);
                 }
                 break;
