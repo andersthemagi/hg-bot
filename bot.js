@@ -132,7 +132,8 @@ bot.on("message", function(message) {
             }catch(ParseException) {
                 message.channel.send("ERROR, NOT A NUMBER");
             }
-
+            message.channel.send("Generating FDE..");
+            message.channel.send(" ");
             var suggestedTime = 0.5 * commands;
             message.channel.send(`Suggested Time for FDE: ${suggestedTime}minutes.`);
             message.channel.send("==============================================");
