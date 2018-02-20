@@ -6,12 +6,65 @@ const PREFIX = ">";
 var bot = new Discord.Client();
 
 var vulgarResponses = [
-	"Holy fuck open the fucking door? @everyone",
-	"HEY FUCKHEAD. DOOR. NOW. @everyone",
-	"Can someone open the fucking door? @everyone",
-	"COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone",
-	"I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone",
-	"Fuck. Shit. Ass. Shit. Fuck. Door. @everyone"
+    "Holy fuck open the fucking door? @everyone",
+    "HEY FUCKHEAD. DOOR. NOW. @everyone",
+    "Can someone open the fucking door? @everyone",
+    "COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone",
+    "I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone",
+    "Fuck. Shit. Ass. Shit. Fuck. Door. @everyone"
+];
+
+var afmanCommands = [
+    "Column Left March",
+    "Present Arms",
+    "Forward March",
+    "Order Arms",
+    "Eyes Right",
+    "Ready Front",
+    "Column Right March",
+    "Parade Rest",
+    "Flight, Attention",
+    "Left Flank March",
+    "Right Flank March",
+    "To The Rear March",
+    "Column Half Left March",
+    "Column Half Right March",
+    "Incline 90 degrees, to the Right",
+    "Incline 90 degrees, to the Left",
+    "Incline 45 degrees, to the Left",
+    "Incline 45 degrees, to the Right",
+    "Incline 180 degrees, to the Left",
+    "Incline 20 degrees, to the Left",
+    "Incline 44 degrees, to the Right",
+    "Open Ranks, March",
+    "Close Ranks, March",
+    "Left Step, March",
+    "Right Step, March",
+    "Close, March",
+    "Extend, March",
+    "Route Step, March",
+    "Dress Right, Dress",
+    "Cover",
+    "Column of Files, from the Right",
+    "Column of Files, from the Left",
+    "Column of Threes",
+    "Ready Front",
+    "Dress Left, Dress",
+    "Eyes, Left",
+    "At Ease, March",
+    "Left Face",
+    "Right Face",
+    "About Face"
+];
+
+var mcoCommands = [
+    "Right Shoulder Arms",
+    "Trail Arms",
+    "Port Arms",
+    "Left Shoulder Arms",
+    "Order Arms",
+    "15 Count Manual of Arms",
+    "Inspection Arms"
 ];
 
 bot.on("ready", function(message) {
@@ -25,163 +78,123 @@ bot.on("message", function(message) {
     if (!message.content.startsWith(PREFIX)) {return;}
 
     var args = message.content.substring(PREFIX.length).split(" ");
-		var choice = Math.floor(Math.random());
+    var choice = Math.floor(Math.random());
     switch(args[0].toLowerCase()) {
-        
-        /*
-            >door [argument]
-            - Lets the channel know that someone needs the door open
-            - Arguments:
-                - vulgar = Verbally abuses the channel and let's them know the door needs opening.
-        */
-        case "door":
-            message.delete(1000);
-            //IF THE NEXT ARGUMENT INCLUDES VULGAR
-            if (args[1] === "vulgar") {
 
-                choice = Math.floor(Math.random() * 6);
-		message.channel.send(vulgarResponses[choice]);
+        case "door":
+        message.delete(1000);
+        if (args[1] === "vulgar") {
+
+            choice = Math.floor(Math.random() * 6);
+            message.channel.send(vulgarResponses[choice]);
+            break;
+        }
+        message.channel.send("Can someone please open the door? @everyone");
+        break;
+
+        case "help":
+        message.delete(1000);
+        const embed = {
+            "title": "Honor Guard Bot Help ",
+            "description": "Here is a list of commands and pertinent information regarding the Honor Guard Bot.",
+            "color": 12345,
+            "timestamp": "2018-02-17T03:54:36.645Z",
+            "fields": [
+                {
+                    "name": ">command",
+                    "value": "Tells the bot to send out a random command from either the AFMAN33-2203 or the MCO P5060.20 Appendix A. There are 16 possible commands it can send."
+                },
+                {
+                    "name": ">door",
+                    "value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open."
+                },
+                {
+                    "name": ">help",
+                    "value": "Displays this list. List is sent through Direct Message to the user who requests it."
+                },
+                {
+                    "name": ">report",
+                    "value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, even if they are duplicates. After 30 seconds, the bot will tally up and send out how many people are here."
+                }
+            ]
+        };
+        message.author.send({ embed });
+        break;
+
+        /*
+        >fde [af/full] [# of commands]
+        */
+        case "fde":
+            try {
+                var commands = parseInt(args[2]);
+                var choice = 0;
+            }catch(ParseException e) {
+                message.channel.send("ERROR, NOT A NUMBER");
+            }
+
+            var suggestedTime = 0.5 * commands;
+            message.channel.send(`Suggested Time for FDE: ${suggestedTime}`);
+            message.channel.send("==============================================");
+
+            //AF drill and ceremonies only
+            if (args[1] == "af") {
+                for (i = 0; i <= commands; i++) {
+                    choice = Math.floor(Math.Random * afmanCommands.length);
+                    message.channel.send(afmanCommands[choice]);
+                }
                 break;
             }
-            //Otherwise, default behavior is as follows
-            message.channel.send("Can someone please open the door? @everyone");
-            break;
-            
-            
-        /*
-            >help
-            - Displays a list of commands and pertinent information regarding the Honor Guard bot.
-                Information is sent through direct message.
-        */
-        case "help":
-            message.delete(1000);
-            
-            const embed = {
-  		"title": "Honor Guard Bot Help ",
-  		"description": "Here is a list of commands and pertinent information regarding the Honor Guard Bot.",
-  		"color": 12345,
-  		"timestamp": "2018-02-17T03:54:36.645Z",
-  		"fields": [
-    		{
-      			"name": ">command",
-      			"value": "Tells the bot to send out a random command from either the AFMAN33-2203 or the MCO P5060.20 Appendix A. There are 16 possible commands it can send."
-    		},
-    		{
-      			"name": ">door",
-      			"value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open."
-    		},
-    		{
-      			"name": ">help",
-      			"value": "Displays this list. List is sent through Direct Message to the user who requests it."
-    		},
-		{
-			"name": ">report",
-			"value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, even if they are duplicates. After 30 seconds, the bot will tally up and send out how many people are here."
-		}
-  		]
-		};
-	    message.author.send({ embed });
-            break;
-        
-        /*
-            >command
-            - Displays a random command from the AFMAN 33-2203 and the MCO P5060.20 Appendix A
-        */
-        case "command":
-            choice = Math.floor(Math.random() * 16 + 1);
-            //Chooses which command to say based off the 
-            if (choice === 1) {
-                message.channel.send("Column Left, March!");
+            else if (args[1] == "full") {
+                break;
             }
-            if (choice === 2) {
-                message.channel.send("Present, Arms!");
-            }
-            if (choice === 3) {
-                message.channel.send("Right Flank, March!");
-            }
-            if (choice === 4) {
-                message.channel.send("About, Face!");
-            }
-            if (choice === 5) {
-                message.channel.send("Parade, Rest!");
-            }
-            if (choice === 6) {
-                message.channel.send("Flight, 'Tench Hut!");
-            }
-            if (choice === 7) {
-                message.channel.send("Forward, March!");
-            }
-            if (choice === 8) {
-                message.channel.send("To the Rear, March!");
-            }
-            if (choice === 9) {
-                message.channel.send("Counter, March!");
-            }
-            if (choice === 10) {
-                message.channel.send("Incline 12 degrees, to the Left!");
-            }
-            if (choice === 11) {
-                message.channel.send("Right Shoulder, Arms!");
-            }
-            if (choice === 12) {
-                message.channel.send("Port, Arms!");
-            }
-            if (choice === 13) {
-                message.channel.send("Order, Arms!");
-            }
-            if (choice === 14) {
-                message.channel.send("Column of Files from the Right, Column Right, March!");
-            }
-            if (choice === 15) {
-                message.channel.send("Trail, Arms!");
-            }
-            if (choice === 16) {
-                message.channel.send("Flight, Halt!");
+            else {
+                message.channel.send("ERROR: Invalid Arguments. Command should be given as '>fde [af/full] [#commands]'");
+                break;
             }
             break;
-		    
-	    /*
-	    	>report
-	    	- Gets accountability based off of who says they're here in the chat within 30 seconds of the report message being sent in the chat. 
-	    */
-	    case "report":
-		    var index = 0;
-		    let uidHolder = [];
-		    const filter = m => {
-			    let id = m.author.id;
-			    if (uidHolder.includes(id) || !m.content.startsWith('here')) {
-				    return false;
-			    }
-			    else {
-				 uidHolder.push(id);
-			    	return true;   
-			    }
-			    
-		    };
 
-		    message.channel.send("@everyone Report your accountability! Type '>here' to be counted!");
-		    
-		    message.channel.awaitMessages(filter, {
-			    max: 200,
-			    time: 45000,
-			    errors: ['time']
-		    })
-		    .then(collected => {
-			    console.log("Recieved Message!");
-		    })
-		    .catch(collected => {
-			    message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
-		    });
-		    /* message.channel.send(`Members who are present:`);
-		    for (index = 0; index < uidHolder; index++) {
-			   client.fetchUser(uidHolder[index])
-			    .then(user => {
-				   message.channel.send(user);
-			   }, rejection => {
-				   message.channel.send("USER LOOKUP ERROR");
-			   });
-		    }*/
-		    break;
-	}
+        /*
+        >report
+        - Gets accountability based off of who says they're here in the chat within 30 seconds of the report message being sent in the chat.
+        */
+        case "report":
+        var index = 0;
+        let uidHolder = [];
+        const filter = m => {
+            let id = m.author.id;
+            if (uidHolder.includes(id) || !m.content.startsWith('here')) {
+                return false;
+            }
+            else {
+                uidHolder.push(id);
+                return true;
+            }
+
+        };
+
+        message.channel.send("@everyone Report your accountability! Type '>here' to be counted!");
+
+        message.channel.awaitMessages(filter, {
+            max: 200,
+            time: 45000,
+            errors: ['time']
+        })
+        .then(collected => {
+            console.log("Recieved Message!");
+        })
+        .catch(collected => {
+            message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
+        });
+        /* message.channel.send(`Members who are present:`);
+        for (index = 0; index < uidHolder; index++) {
+        client.fetchUser(uidHolder[index])
+        .then(user => {
+        message.channel.send(user);
+    }, rejection => {
+    message.channel.send("USER LOOKUP ERROR");
+});
+}*/
+break;
+}
 });
 bot.login(process.env.BOT_TOKEN);
