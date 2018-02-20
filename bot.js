@@ -5,6 +5,15 @@ const PREFIX = ">";
 
 var bot = new Discord.Client();
 
+var vulgarResponses = [
+	"Holy fuck open the fucking door? @everyone",
+	"HEY FUCKHEAD. DOOR. NOW. @everyone",
+	"Can someone open the fucking door? @everyone",
+	"COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone",
+	"I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone",
+	"Fuck. Shit. Ass. Shit. Fuck. Door. @everyone"
+];
+
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
@@ -30,26 +39,8 @@ bot.on("message", function(message) {
             //IF THE NEXT ARGUMENT INCLUDES VULGAR
             if (args[1] === "vulgar") {
 
-                choice = Math.floor(Math.random() * 6 + 1);
-                // CHOOSING WHICH VULGARITY TO USE
-                if (choice === 1) {
-                    message.channel.send("Holy fuck open the fucking door? @everyone");
-                }
-                else if (choice === 2) {
-                    message.channel.send("Can someone open the fucking door? @everyone");
-                }
-                else if (choice === 3) {
-                    message.channel.send("HEY FUCKHEAD. DOOR. NOW. @everyone");
-                }
-                else if (choice === 4) {
-                    message.channel.send("COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone");
-                }
-                else if (choice === 5) {
-                    message.channel.send("I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone");
-                }
-                else if (choice === 6) {
-                    message.channel.send("Fuck. Shit. Ass. Shit. Fuck. Door. @everyone");
-                }
+                choice = Math.floor(Math.random() * 6);
+		message.channel.send(vulgarResponses[choice]);
                 break;
             }
             //Otherwise, default behavior is as follows
