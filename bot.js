@@ -184,7 +184,7 @@ bot.on("message", function(message) {
 
         };
 
-        message.channel.send("@everyone Report your accountability! Type '>here' to be counted!");
+        message.channel.send("@everyone Report your accountability! Type 'here' to be counted!");
 
         message.channel.awaitMessages(filter, {
             max: 200,
@@ -197,16 +197,16 @@ bot.on("message", function(message) {
         .catch(collected => {
             message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
         });
-        /* message.channel.send(`Members who are present:`);
+        message.channel.send(`Members who are present:`);
         for (index = 0; index < uidHolder; index++) {
-        client.fetchUser(uidHolder[index])
-        .then(user => {
-        message.channel.send(user);
-    }, rejection => {
-    message.channel.send("USER LOOKUP ERROR");
-});
-}*/
-break;
-}
+            client.fetchUser(uidHolder[index])
+            .then(user => {
+            message.channel.send(user);
+            }, rejection => {
+            message.channel.send("USER LOOKUP ERROR");
+            });
+       }
+        break;
+        }
 });
 bot.login(process.env.BOT_TOKEN);
