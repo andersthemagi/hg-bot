@@ -183,6 +183,8 @@ bot.on("message", function(message) {
                 }
                 message.channel.send(returnString);
                 message.channel.send(" ");
+                message.channel.send("==================================");
+                message.channel.send(" ");
                 message.channel.send(`Commands Generated: ${i}`);
             }
             else if (args[1] == "full") {
@@ -206,6 +208,8 @@ bot.on("message", function(message) {
                     }
                 }
                 message.channel.send(returnString);
+                message.channel.send(" ");
+                message.channel.send("==================================");
                 message.channel.send(" ");
                 message.channel.send(`Commands Generated: ${i}`);
             }
@@ -231,6 +235,8 @@ bot.on("message", function(message) {
                 }
                 message.channel.send(returnString);
                 message.channel.send(" ");
+                message.channel.send("==================================");
+                message.channel.send(" ");
                 message.channel.send(`Commands Generated: ${i}`);
             }
             else if (args[1] == "afpro") {
@@ -245,6 +251,8 @@ bot.on("message", function(message) {
                     returnString = returnString + afmanProCommands[choice].toString() + "\n";
                 }
                 message.channel.send(returnString);
+                message.channel.send(" ");
+                message.channel.send("==================================");
                 message.channel.send(" ");
                 message.channel.send(`Commands Generated: ${i}`);
             }
