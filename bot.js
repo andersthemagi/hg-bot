@@ -152,16 +152,16 @@ bot.on("message", function(message) {
             if (args[1] == "af") {
                 for (i = 0; i <= commands; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
-                    embed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
+                    //embed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
                 }
                 message.channel.send({embed});
             }
             else if (args[1] == "full") {
-                break;
+                
             }
             else if (args[1] != "full" || args[1] != "af") {
                 message.channel.send("ERROR: Argument 1 is invalid. Command format: '>fde [af/full] [number]'");
-                break;
+                
             }
             break;
 
