@@ -177,7 +177,7 @@ bot.on("message", function(message) {
                 message.channel.send(" ");
                 message.channel.send("==================================");
                 message.channel.send(" ");
-                for (i = 0; i <= commands; i++) {
+                for (i = 0; i <= commands - 1; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
                     returnString = returnString + afmanCommands[choice].toString() + "\n";
                 }
