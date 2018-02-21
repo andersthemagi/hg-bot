@@ -167,16 +167,15 @@ bot.on("message", function(message) {
             
             var i = 0;
             var returnString = " ";
+            
+            message.channel.send("Generating FDE..");
+            message.channel.send(" ");
+                
             if (args[1] == "af") {
+                returnString += "TYPE: AIR FORCE\n";
+                returnString += `SUGGESTED TIME: ${suggestedTime} MINUTES\n`;
+                returnString += "\n=================================\n";
                 
-                message.channel.send("Generating Air Force FDE..");
-                message.channel.send(" ");
-                
-                returnString += "/n=================================/n";
-                /* message.channel.send(`Suggested Time for FDE: ${suggestedTime} minutes`);
-                message.channel.send(" ");
-                message.channel.send("==================================");
-                message.channel.send(" "); */
                 for (i = 0; i <= commands - 1; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
                     returnString = returnString + afmanCommands[choice].toString() + "\n";
@@ -185,10 +184,8 @@ bot.on("message", function(message) {
             else if (args[1] == "full") {
                 message.channel.send("Generating Armed Drill FDE..");
                 message.channel.send(" ");
-                message.channel.send(`Suggested Time for FDE: ${suggestedTime} minutes`);
-                message.channel.send(" ");
-                message.channel.send("==================================");
-                message.channel.send(" ");
+                
+                returnString += 
                 for (i = 0; i <= commands - 1; i++) {
                     choice = Math.random()
                     //50/50 chance of choosing AFMAN or MCO commands
@@ -240,7 +237,7 @@ bot.on("message", function(message) {
             else if (args[1] != "full" || args[1] != "af" || args[1] != "afpro" || args[1] != "fullpro") {
                 message.channel.send("ERROR: Argument 1 is invalid. Command format: '>fde [af/full] [number]'");
             }
-            returnString += "/n=================================/n";
+            returnString += "\n=================================\n";
             message.channel.send(returnString);
             break;
 
