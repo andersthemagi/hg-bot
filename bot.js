@@ -194,11 +194,11 @@ bot.on("message", function(message) {
                     choice = Math.random()
                     //50/50 chance of choosing AFMAN or MCO commands
                     //If it passes this check, choose an air force command
-                    if (choice >= 0.5) {
+                    if (choice >= 0.3) {
                         choice = Math.floor(Math.random() * afmanCommands.length);
                         returnString = returnString + afmanCommands[choice].toString() + "\n";
                     }
-                    else if (choice < 0.5) {
+                    else if (choice < 0.3) {
                         choice = Math.floor(Math.random() * mcoCommands.length);
                         returnString = returnString + mcoCommands[choice].toString() + "\n";
                     }
@@ -216,11 +216,11 @@ bot.on("message", function(message) {
                     choice = Math.random()
                     //50/50 chance of choosing AFMAN or MCO commands
                     //If it passes this check, choose an air force command
-                    if (choice >= 0.5) {
+                    if (choice >= 0.3) {
                         choice = Math.floor(Math.random() * afmanProCommands.length);
                         returnString = returnString + afmanProCommands[choice].toString() + "\n";
                     }
-                    else if (choice < 0.5) {
+                    else if (choice < 0.3) {
                         choice = Math.floor(Math.random() * mcoCommands.length);
                         returnString = returnString + mcoCommands[choice].toString() + "\n";
                     }
