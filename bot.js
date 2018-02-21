@@ -61,8 +61,6 @@ var afmanProCommands = [
     "Incline 45 degrees, to the Left",
     "Incline 45 degrees, to the Right",
     "Incline 180 degrees, to the Left",
-    "Incline 20 degrees, to the Left",
-    "Incline 44 degrees, to the Right",
     "Open Ranks, March",
     "Close Ranks, March",
     "Left Step, March",
