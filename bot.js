@@ -138,23 +138,16 @@ bot.on("message", function(message) {
             message.channel.send("Generating FDE..");
             message.channel.send(" ");
             var suggestedTime = 0.5 * commands;
-            
-            var embed = {
-                "title": "Auto Generated FDE",
-                "author": "Honor Guard Bot",
-              	"description": `Suggested Time: ${suggestedTime} minutes`,
-                "color": "#5D8AA8",
-                "fields": []
-            };
 
             //AF drill and ceremonies only
-        		var i = 0;
+            var i = 0;
+            var returnString = " ";
             if (args[1] == "af") {
                 for (i = 0; i <= commands; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
-                    //embed.fields.push({"name": afmanCommands[choice], "value": " ", "inline": false});
+                    returnString = returnString + afmanCommands[choice].toString() + "\n";
                 }
-                message.channel.send({embed});
+                message.channel.send(returnString);
             }
             else if (args[1] == "full") {
                 
