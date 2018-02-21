@@ -204,16 +204,15 @@ bot.on("message", function(message) {
             .catch(collected => {
                 message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
             });
-
-
-
-            sleep(31000);
-            var user = null; 
-            message.channel.send(`Members who are present:`);
-            for (index = 0; index < uidHolder.length; index++) {
-                user = bot.fetchUser(uidHolder[index]);
-                message.channel.send(user.username);
+            function printNames() {
+                var user = null; 
+                message.channel.send(`Members who are present:`);
+                for (index = 0; index < uidHolder.length; index++) {
+                    user = bot.fetchUser(uidHolder[index]);
+                    message.channel.send(user.username);
+                }
             }
+            setTimeout(printNames, 31000); 
             break;
         }
 });
