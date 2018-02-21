@@ -124,8 +124,7 @@ bot.on("message", function(message) {
         var embed = {
             "title": "Honor Guard Bot Help ",
             "description": "Here is a list of commands and pertinent information regarding the Honor Guard Bot.",
-            "color": 12345,
-            "timestamp": "2018-02-17T03:54:36.645Z",
+            "color": 0x5D8AA8,
             "fields": [
                 {
                     "name": ">door [vulgar]",
