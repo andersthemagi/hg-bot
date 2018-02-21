@@ -185,9 +185,8 @@ bot.on("message", function(message) {
                 message.channel.send("Generating Armed Drill FDE..");
                 message.channel.send(" ");
                 
-                returnString += 
                 for (i = 0; i <= commands - 1; i++) {
-                    choice = Math.random()
+                    choice = Math.random();
                     //50/50 chance of choosing AFMAN or MCO commands
                     //If it passes this check, choose an air force command
                     if (choice >= 0.3) {
@@ -208,7 +207,7 @@ bot.on("message", function(message) {
                 message.channel.send("==================================");
                 message.channel.send(" ");
                 for (i = 0; i <= commands - 1; i++) {
-                    choice = Math.random()
+                    choice = Math.random();
                     //50/50 chance of choosing AFMAN or MCO commands
                     //If it passes this check, choose an air force command
                     if (choice >= 0.3) {
