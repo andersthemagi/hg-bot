@@ -165,8 +165,6 @@ bot.on("message", function(message) {
             
             var suggestedTime = 0.5 * commands;
             
-
-            //AF drill and ceremonies only
             var i = 0;
             var returnString = " ";
             if (args[1] == "af") {
@@ -180,11 +178,6 @@ bot.on("message", function(message) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
                     returnString = returnString + afmanCommands[choice].toString() + "\n";
                 }
-                message.channel.send(returnString);
-                message.channel.send(" ");
-                message.channel.send("==================================");
-                message.channel.send(" ");
-                message.channel.send(`Commands Generated: ${i}`);
             }
             else if (args[1] == "full") {
                 message.channel.send("Generating Armed Drill FDE..");
@@ -206,14 +199,9 @@ bot.on("message", function(message) {
                         returnString = returnString + mcoCommands[choice].toString() + "\n";
                     }
                 }
-                message.channel.send(returnString);
-                message.channel.send(" ");
-                message.channel.send("==================================");
-                message.channel.send(" ");
-                message.channel.send(`Commands Generated: ${i}`);
             }
             else if (args[1] == "fullpro") {
-                message.channel.send("Generating Armed Drill FDE..");
+                message.channel.send("Generating ADVANCED Armed Drill FDE..");
                 message.channel.send(" ");
                 message.channel.send(`Suggested Time for FDE: ${suggestedTime} minutes`);
                 message.channel.send(" ");
@@ -232,11 +220,6 @@ bot.on("message", function(message) {
                         returnString = returnString + mcoCommands[choice].toString() + "\n";
                     }
                 }
-                message.channel.send(returnString);
-                message.channel.send(" ");
-                message.channel.send("==================================");
-                message.channel.send(" ");
-                message.channel.send(`Commands Generated: ${i}`);
             }
             else if (args[1] == "afpro") {
                 message.channel.send("Generating ADVANCED Air Force FDE..");
@@ -249,15 +232,13 @@ bot.on("message", function(message) {
                     choice = Math.floor(Math.random() * afmanProCommands.length);
                     returnString = returnString + afmanProCommands[choice].toString() + "\n";
                 }
-                message.channel.send(returnString);
-                message.channel.send(" ");
-                message.channel.send("==================================");
-                message.channel.send(" ");
-                message.channel.send(`Commands Generated: ${i}`);
+                
             }
             else if (args[1] != "full" || args[1] != "af" || args[1] != "afpro" || args[1] != "fullpro") {
                 message.channel.send("ERROR: Argument 1 is invalid. Command format: '>fde [af/full] [number]'");
             }
+            returnString = returnString + "\n===============================\n";
+            message.channel.send(returnString);
             break;
 
         /*
