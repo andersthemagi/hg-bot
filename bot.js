@@ -180,7 +180,7 @@ bot.on("message", function(message) {
                 }
                 else {
                     uidHolder.push(id);
-                    usernameHolder.push(m.author.nickname);
+                    usernameHolder.push(m.member.nickname);
                     return true;
                 }
             };
