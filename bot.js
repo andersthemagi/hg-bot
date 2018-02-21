@@ -69,6 +69,15 @@ var mcoCommands = [
     "Inspection Arms"
 ];
 
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds){
+        break;
+        }
+    }
+}
+
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
@@ -170,45 +179,42 @@ bot.on("message", function(message) {
         - Gets accountability based off of who says they're here in the chat within 30 seconds of the report message being sent in the chat.
         */
         case "report":
-        var index = 0;
-        let uidHolder = [];
-        const filter = m => {
-            let id = m.author.id;
-            if (uidHolder.includes(id) || !m.content.startsWith('here')) {
-                return false;
-            }
-            else {
-                uidHolder.push(id);
-                return true;
-            }
+            var index = 0;
+            let uidHolder = [];
+            const filter = m => {
+                let id = m.author.id;
+                if (uidHolder.includes(id) || !m.content.startsWith('here')) {
+                    return false;
+                }
+                else {
+                    uidHolder.push(id);
+                    return true;
+                }
+            };
 
-        };
+            message.channel.send("@everyone Report your accountability! Type 'here' to be counted!");
+            message.channel.awaitMessages(filter, {
+                max: 200,
+                time: 30000,
+                errors: ['time']
+            })
+            .then(collected => {
+                console.log("Recieved Message!");
+            })
+            .catch(collected => {
+                message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
+            });
 
-        message.channel.send("@everyone Report your accountability! Type 'here' to be counted!");
 
-        message.channel.awaitMessages(filter, {
-            max: 200,
-            time: 30000,
-            errors: ['time']
-        })
-        .then(collected => {
-            console.log("Recieved Message!");
-        })
-        .catch(collected => {
-            message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
-        });
-            
-        var user = null;
-            
-        setTimeout(function() {
+
+            sleep(31000);
+            var user = null; 
             message.channel.send(`Members who are present:`);
             for (index = 0; index < uidHolder.length; index++) {
                 user = client.fetchUser(uidHolder[index]);
                 message.channel.send(user.username);
             }
-        }, 31000);
-            
-        break;
+            break;
         }
 });
 bot.login(process.env.BOT_TOKEN);
