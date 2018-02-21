@@ -31,6 +31,31 @@ var afmanCommands = [
     "To The Rear March",
     "Column Half Left March",
     "Column Half Right March",
+    "Left Step, March",
+    "Right Step, March",
+    "Left Face",
+    "Right Face",
+    "About Face",
+    "Dress Right, Dress",
+    "Cover",
+    "Ready Front"
+];
+
+var afmanProCommands = [
+    "Column Left March",
+    "Present Arms",
+    "Forward March",
+    "Order Arms",
+    "Eyes Right",
+    "Ready Front",
+    "Column Right March",
+    "Parade Rest",
+    "Flight, Attention",
+    "Left Flank March",
+    "Right Flank March",
+    "To The Rear March",
+    "Column Half Left March",
+    "Column Half Right March",
     "Incline 90 degrees, to the Right",
     "Incline 90 degrees, to the Left",
     "Incline 45 degrees, to the Left",
@@ -135,14 +160,23 @@ bot.on("message", function(message) {
                 message.channel.send("ERROR, NOT A NUMBER");
                 break;
             }
-            message.channel.send("Generating FDE..");
-            message.channel.send(" ");
+            if(commands > 25) {
+                message.channel.send("ERROR: TOO MANY COMMANDS");
+            }
+            
             var suggestedTime = 0.5 * commands;
+            
 
             //AF drill and ceremonies only
             var i = 0;
             var returnString = " ";
             if (args[1] == "af") {
+                message.channel.send("Generating Air Force FDE..");
+                message.channel.send(" ");
+                message.channel.send(`Suggested Time for FDE: ${suggestedTime} minutes`);
+                message.channel.send(" ");
+                message.channel.send("==================================");
+                message.channel.send(" ");
                 for (i = 0; i <= commands; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
                     returnString = returnString + afmanCommands[choice].toString() + "\n";
@@ -150,11 +184,64 @@ bot.on("message", function(message) {
                 message.channel.send(returnString);
             }
             else if (args[1] == "full") {
-                
+                message.channel.send("Generating Armed Drill FDE..");
+                message.channel.send(" ");
+                message.channel.send(`Suggested Time for FDE: ${suggestedTime} minutes`);
+                message.channel.send(" ");
+                message.channel.send("==================================");
+                message.channel.send(" ");
+                for (i = 0; i <= commands; i++) {
+                    choice = Math.random()
+                    //50/50 chance of choosing AFMAN or MCO commands
+                    //If it passes this check, choose an air force command
+                    if (choice >= 0.5) {
+                        choice = Math.floor(Math.random() * afmanCommands.length);
+                        returnString = returnString + afmanCommands[choice].toString() + "\n";
+                    }
+                    else if (choice < 0.5) {
+                        choice = Math.floor(Math.random() * mcoCommands.length);
+                        returnString = returnString + mcoCommands[choice].toString() + "\n";
+                    }
+                }
+                message.channel.send(returnString);
             }
-            else if (args[1] != "full" || args[1] != "af") {
+            else if (args[1] == "fullpro") {
+                message.channel.send("Generating Armed Drill FDE..");
+                message.channel.send(" ");
+                message.channel.send(`Suggested Time for FDE: ${suggestedTime} minutes`);
+                message.channel.send(" ");
+                message.channel.send("==================================");
+                message.channel.send(" ");
+                for (i = 0; i <= commands; i++) {
+                    choice = Math.random()
+                    //50/50 chance of choosing AFMAN or MCO commands
+                    //If it passes this check, choose an air force command
+                    if (choice >= 0.5) {
+                        choice = Math.floor(Math.random() * afmanProCommands.length);
+                        returnString = returnString + afmanProCommands[choice].toString() + "\n";
+                    }
+                    else if (choice < 0.5) {
+                        choice = Math.floor(Math.random() * mcoCommands.length);
+                        returnString = returnString + mcoCommands[choice].toString() + "\n";
+                    }
+                }
+                message.channel.send(returnString);
+            }
+            else if (args[1] == "afpro") {
+                message.channel.send("Generating ADVANCED Air Force FDE..");
+                message.channel.send(" ");
+                message.channel.send(`Suggested Time for FDE: ${suggestedTime} minutes`);
+                message.channel.send(" ");
+                message.channel.send("==================================");
+                message.channel.send(" ");
+                for (i = 0; i <= commands; i++) {
+                    choice = Math.floor(Math.random() * afmanProCommands.length);
+                    returnString = returnString + afmanProCommands[choice].toString() + "\n";
+                }
+                message.channel.send(returnString);
+            }
+            else if (args[1] != "full" || args[1] != "af" || args[1] != "afpro" || args[1] != "fullpro") {
                 message.channel.send("ERROR: Argument 1 is invalid. Command format: '>fde [af/full] [number]'");
-                
             }
             break;
 
