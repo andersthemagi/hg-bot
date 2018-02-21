@@ -197,15 +197,14 @@ bot.on("message", function(message) {
         .catch(collected => {
             message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
         });
+            
+        var user = null;
+            
         setTimeout(function() {
             message.channel.send(`Members who are present:`);
             for (index = 0; index < uidHolder.length; index++) {
-                client.fetchUser(uidHolder[index])
-                .then(user => {
-                    message.channel.send(user);
-                }, rejection => {
-                    message.channel.send("USER LOOKUP ERROR");
-                });
+                user = client.fetchUser(uidHolder[index]);
+                message.channel.send(user.username);
             }
         }, 31000);
             
