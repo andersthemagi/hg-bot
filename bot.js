@@ -172,6 +172,7 @@ bot.on("message", function(message) {
         case "report":
             var index = 0;
             let uidHolder = [];
+            let usernameHolder = [];
             const filter = m => {
                 let id = m.author.id;
                 if (uidHolder.includes(id) || !m.content.startsWith('here')) {
@@ -179,6 +180,7 @@ bot.on("message", function(message) {
                 }
                 else {
                     uidHolder.push(id);
+                    usernameHolder.push(m.author.username);
                     return true;
                 }
             };
@@ -196,15 +198,17 @@ bot.on("message", function(message) {
                 message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
             });
             function printNames() {
-                //var user = null; 
+                var printout = " ";
                 message.channel.send(`Members who are present:`);
                 /*for (index = 0; index < uidHolder.length; index++) {
                     user = bot.fetchUser(uidHolder[index]);
                     message.channel.send(user.username);
                 }*/
-                uidHolder.map(function(i) {
-                    message.channel.send((bot.fetchUser(i)).username);
-                });
+                for (index = 0; index < usernameHolder.length; index++)
+                {
+                    printout = printout + usernameHolder[index] + ", ";
+                }
+                message.channel.send(printout);
             }
             setTimeout(printNames, 31000); 
             break;
