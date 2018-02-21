@@ -128,12 +128,12 @@ bot.on("message", function(message) {
             "timestamp": "2018-02-17T03:54:36.645Z",
             "fields": [
                 {
-                    "name": ">command",
-                    "value": "Tells the bot to send out a random command from either the AFMAN33-2203 or the MCO P5060.20 Appendix A. There are 16 possible commands it can send."
+                    "name": ">door [vulgar]",
+                    "value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open."
                 },
                 {
-                    "name": ">door",
-                    "value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open."
+                    "name": ">fde [af/afpro/full/fullpro] [number of commands]",
+                    "value": "Auto Generates an FDE. 'af' and 'afpro' generate commands in AFMAN36-2203. 'full' and 'fullpro' generate commands with AF and the MCO P5060.20 Appendix A"
                 },
                 {
                     "name": ">help",
@@ -141,7 +141,7 @@ bot.on("message", function(message) {
                 },
                 {
                     "name": ">report",
-                    "value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, even if they are duplicates. After 30 seconds, the bot will tally up and send out how many people are here."
+                    "value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, not counting duplicates. After 30 seconds, the bot will tally up and send out how many people are here. It will also specify who said they were here."
                 }
             ]
         };
