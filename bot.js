@@ -197,7 +197,7 @@ bot.on("message", function(message) {
         .catch(collected => {
             message.channel.send(`Accountability is ${collected.size} present and ready for practice.`);
         });
-        var printDelay = setTimeout(function() {
+        setTimeout(function() {
             message.channel.send(`Members who are present:`);
             for (index = 0; index < uidHolder.length; index++) {
                 client.fetchUser(uidHolder[index])
