@@ -211,7 +211,7 @@ bot.on("message", function(message) {
             var user = null; 
             message.channel.send(`Members who are present:`);
             for (index = 0; index < uidHolder.length; index++) {
-                user = client.fetchUser(uidHolder[index]);
+                user = bot.fetchUser(uidHolder[index]);
                 message.channel.send(user.username);
             }
             break;
