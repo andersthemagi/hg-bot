@@ -280,6 +280,15 @@ bot.on("message", function(message) {
             }
             setTimeout(printNames, 31000); 
             break;
+            
+        case "react":
+            if (args[1] == "mertz") {
+                message.edit("T h A t  I s  S o  R u D e")
+                .then(msg => console.log(`Changed message from ${msg.author}`))
+                .catch(console.error);
+                break;
+            }
+            break;
         }
 });
 bot.login(process.env.BOT_TOKEN);
