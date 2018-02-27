@@ -283,9 +283,8 @@ bot.on("message", function(message) {
             
         case "react":
             if (args[1] == "mertz") {
-                message.edit("T h A t  I s  S o  R u D e")
-                .then(msg => console.log(`Changed message from ${msg.author}`))
-                .catch(console.error);
+                message.delete();
+                message.channel.send("t H a T  i S  s O  r U d E");
                 break;
             }
             break;
