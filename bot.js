@@ -10,7 +10,7 @@ var gh = GitHub.new({
     password: process.env.GIT_PASSWORD
 })
 var repo = gh.getRepo(process.env.GIT_USER, "hg-bot");
-var branch = gh.getDefaultBranch();
+var branch = repo.getDefaultBranch();
 
 const PREFIX = ">";
 
