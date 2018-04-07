@@ -1,6 +1,7 @@
 "use strict";
 
 const Discord = require("discord.js");
+const fs = require("fs");
 
 const PREFIX = ">";
 
@@ -92,6 +93,10 @@ var mcoCommands = [
     "Inspection Arms"
 ];
 
+var officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
+var activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
+var traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding": "utf-8"});
+
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
@@ -104,46 +109,47 @@ bot.on("message", function(message) {
 
     var args = message.content.substring(PREFIX.length).split(" ");
     var choice = Math.floor(Math.random());
-    switch(args[0].toLowerCase()) {
+    switch(args[0].toLowerCase())
+    {
 
         case "door":
-        message.delete(1000);
-        if (args[1] === "vulgar") {
+            message.delete(1000);
+            if (args[1] === "vulgar") {
 
-            choice = Math.floor(Math.random() * 6);
-            message.channel.send(vulgarResponses[choice]);
+                choice = Math.floor(Math.random() * 6);
+                message.channel.send(vulgarResponses[choice]);
+                break;
+            }
+            message.channel.send("Can someone please open the door? @everyone");
             break;
-        }
-        message.channel.send("Can someone please open the door? @everyone");
-        break;
 
         case "help":
-        message.delete(1000);
-        var embed = {
-            "title": "Honor Guard Bot Help ",
-            "description": "Here is a list of commands and pertinent information regarding the Honor Guard Bot.",
-            "color": 0x5D8AA8,
-            "fields": [
-                {
-                    "name": ">door [vulgar]",
-                    "value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open."
-                },
-                {
-                    "name": ">fde [af/afpro/full/fullpro] [number of commands]",
-                    "value": "Auto Generates an FDE. 'af' and 'afpro' generate commands in AFMAN36-2203. 'full' and 'fullpro' generate commands with AF and the MCO P5060.20 Appendix A"
-                },
-                {
-                    "name": ">help",
-                    "value": "Displays this list. List is sent through Direct Message to the user who requests it."
-                },
-                {
-                    "name": ">report",
-                    "value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, not counting duplicates. After 30 seconds, the bot will tally up and send out how many people are here. It will also specify who said they were here."
-                }
-            ]
-        };
-        message.author.send({ embed });
-        break;
+            message.delete(1000);
+            var embed = {
+                "title": "Honor Guard Bot Help ",
+                "description": "Here is a list of commands and pertinent information regarding the Honor Guard Bot.",
+                "color": 0x5D8AA8,
+                "fields": [
+                    {
+                        "name": ">door [vulgar]",
+                        "value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open."
+                    },
+                    {
+                        "name": ">fde [af/afpro/full/fullpro] [number of commands]",
+                        "value": "Auto Generates an FDE. 'af' and 'afpro' generate commands in AFMAN36-2203. 'full' and 'fullpro' generate commands with AF and the MCO P5060.20 Appendix A"
+                    },
+                    {
+                        "name": ">help",
+                        "value": "Displays this list. List is sent through Direct Message to the user who requests it."
+                    },
+                    {
+                        "name": ">report",
+                        "value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, not counting duplicates. After 30 seconds, the bot will tally up and send out how many people are here. It will also specify who said they were here."
+                    }
+                ]
+            };
+            message.author.send({ embed });
+            break;
 
         /*
         >fde [af/full] [# of commands]
@@ -160,20 +166,20 @@ bot.on("message", function(message) {
             if(commands > 25) {
                 message.channel.send("ERROR: TOO MANY COMMANDS");
             }
-            
+
             var suggestedTime = 0.5 * commands;
-            
+
             var i = 0;
             var returnString = " ";
-            
+
             message.channel.send("Generating FDE..");
             message.channel.send(" ");
-                
+
             if (args[1] == "af") {
                 returnString += "\nTYPE: AIR FORCE\n";
                 returnString += `SUGGESTED TIME: ${suggestedTime} MINUTES\n`;
                 returnString += "\n=================================\n";
-                
+
                 for (i = 0; i <= commands - 1; i++) {
                     choice = Math.floor(Math.random() * afmanCommands.length);
                     returnString = returnString + afmanCommands[choice].toString() + "\n";
@@ -183,7 +189,7 @@ bot.on("message", function(message) {
                 returnString += "\nTYPE: ARMED DRILL\n";
                 returnString += `SUGGESTED TIME: ${suggestedTime} MINUTES\n`;
                 returnString += "\n=================================\n";
-                
+
                 for (i = 0; i <= commands - 1; i++) {
                     choice = Math.random();
                     //50/50 chance of choosing AFMAN or MCO commands
@@ -202,7 +208,7 @@ bot.on("message", function(message) {
                 returnString += "\nTYPE: **ADVANCED** ARMED DRILL\n";
                 returnString += `SUGGESTED TIME: ${suggestedTime} MINUTES\n`;
                 returnString += "\n=================================\n";
-                
+
                 for (i = 0; i <= commands - 1; i++) {
                     choice = Math.random();
                     //50/50 chance of choosing AFMAN or MCO commands
@@ -268,26 +274,96 @@ bot.on("message", function(message) {
             function printNames() {
                 var printout = " ";
                 message.channel.send(`Members who are present:`);
-                /*for (index = 0; index < uidHolder.length; index++) {
-                    user = bot.fetchUser(uidHolder[index]);
-                    message.channel.send(user.username);
-                }*/
                 for (index = 0; index < usernameHolder.length; index++)
                 {
                     printout = printout + usernameHolder[index] + ", ";
                 }
                 message.channel.send(printout);
             }
-            setTimeout(printNames, 31000); 
+            setTimeout(printNames, 31000);
             break;
-            
-        case "react":
-            if (args[1] == "mertz") {
-                message.delete();
-                message.channel.send("t H a T  i S  s O  r U d E");
-                break;
+
+        case "roster":
+            if (args[1] == "all")
+            {
+                message.channel.send("Here's a list of all the members of Honor Guard by classification: ");
+                var toReturn = "Officers:\n";
+                toReturn += officerRoster;
+                toReturn += "Actives:\n";
+                toReturn += activeRoster;
+                toReturn += "Trainees:\n";
+                toReturn += traineeRoster;
+            }
+            else if (args[1] == "officers")
+            {
+                if (officerRoster == "")
+                {
+                    message.channel.send("No officers on the roster. Weird as shit.");
+                    break;
+                }
+                message.channel.send("Here is a list of our officers and their positions: ")
+            }
+            else if (args[1] == "actives")
+            {
+                if (activeRoster == "")
+                {
+                    message.channel.send("No actives on the roster! That's weird.");
+                    break;
+                }
+                message.channel.send("Here is a roster of all our current actives: ");
+                message.channel.send(activeRoster);
+            }
+            else if (args[1] == "trainees")
+            {
+                if (traineeRoster == "")
+                {
+                    message.channel.send("No Trainees on the roster!")
+                    break;
+                }
+                message.channel.send("Here is a roster of all our current trainees: ");
+                message.channel.send(traineeRoster);
+            }
+            else if (args[1] == "add")
+            {
+                var toAdd = "";
+                for (int index = 3; index < args.length; index++)
+                {
+                    toAdd += args[index];
+                }
+                toAdd += "\n";
+
+                if (args[2] == "officers")
+                {
+                    fs.appendFileSync("./rosters/officers.txt", toAdd, "utf8");
+                    officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding" : "utf-8"});
+                    message.channel.send(`Added ${toAdd} to the officers roster!`);
+                    break;
+                }
+                else if (args[2] == "actives")
+                {
+                    fs.appendFileSync("./rosters/actives.txt", toAdd, "utf8");
+                    activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding" : "utf-8"});
+                    message.channel.send('Added ${toAdd} to the actives roster!');
+                    break;
+                }
+                else if (args[3] == "trainees")
+                {
+                    fs.appendFileSync("./rosters/trainees.txt", toAdd, "utf8");
+                    traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding" : "utf-8"});
+                    message.channel.send('Added ${toAdd} to the trainee roster!');
+                    break;
+                }
+                else
+                {
+                    message.channel.send("I can't add to a list that ain't there. Try again with an actual roster. ");
+                }
             }
             break;
+
+        default:
+            message.channel.send("I don't understand what to do with that command. Please use >help to get a list of possible commands to give me!")
         }
 });
+
+
 bot.login(process.env.BOT_TOKEN);
