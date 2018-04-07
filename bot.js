@@ -383,9 +383,9 @@ bot.on("message", function(message) {
                 {
                     var tempStorage = officers[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
-                    for (var index = 0; index < tempStorage.length - 1; index++)
+                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
-                        tempString += tempStorage[index] + " ";
+                        tempString += tempStorage[innerIndex] + " ";
                     }
                     officers[index] = tempString;
                 }
