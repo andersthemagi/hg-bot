@@ -344,26 +344,6 @@ bot.on("message", function(message) {
 
 
         case "roster":
-            function getUsers(role)
-            {
-                var toReturn = "";
-                var toAdd = "";
-                var sortedMembers = [];
-                for (var index = 0; index < members.length; index++);
-                {
-                    if(members[index].roles.has(role.id))
-                    {
-                        sortedMembers.push(members[index].nickname);
-                    }
-                }
-                sortedMembers.sort();
-                for (var index = 0; index < sortedMembers.length; index++)
-                {
-                    toAdd = sortedMembers[index];
-                    toReturn += toAdd + "\n";
-                }
-                return toReturn;
-            }
             if (args[1] == "officers")
             {
                 var toReturn = "";
@@ -404,14 +384,31 @@ bot.on("message", function(message) {
                 var toReturn = "";
                 var toAdd = "";
                 var activeRole = message.guild.roles.find("name", "Actives");
+                var actives = [];
                 for (var index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(activeRole.id))
                     {
-                        toAdd = members[index].toString();
-                        toReturn += toAdd;
-                        toReturn += "\n";
+                        actives.push(members[index].nickname);
                     }
+                }
+                actives.sort();
+                var tempString = "";
+                for (var index = 0; index < actives.length; index++)
+                {
+                    var tempStorage = actives[index].split(" ");
+                    tempString = tempStorage[tempStorage.length - 1] + ", ";
+                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    {
+                        tempString += tempStorage[innerIndex] + " ";
+                    }
+                    actives[index] = tempString;
+                }
+                actives.sort();
+                for (var index = 0; index < actives.length; index++)
+                {
+                    toAdd = actives[index];
+                    toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our actives: \n");
                 message.channel.send(toReturn);
@@ -422,14 +419,31 @@ bot.on("message", function(message) {
                 var toReturn = "";
                 var toAdd = "";
                 var traineeRole = message.guild.roles.find("name", "Trainees");
+                var trainees = [];
                 for (var index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(traineeRole.id))
                     {
-                        toAdd = members[index].toString();
-                        toReturn += toAdd;
-                        toReturn += "\n";
+                        trainees.push(members[index].nickname);
                     }
+                }
+                trainees.sort();
+                var tempString = "";
+                for (var index = 0; index < trainees.length; index++)
+                {
+                    var tempStorage = trainees[index].split(" ");
+                    tempString = tempStorage[tempStorage.length - 1] + ", ";
+                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    {
+                        tempString += tempStorage[innerIndex] + " ";
+                    }
+                    trainees[index] = tempString;
+                }
+                trainees.sort();
+                for (var index = 0; index < trainees.length; index++)
+                {
+                    toAdd = officers[index];
+                    toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our trainees: \n");
                 message.channel.send(toReturn);
@@ -438,6 +452,7 @@ bot.on("message", function(message) {
             else
             {
                 message.channel.send("I don't have any rosters about that. Try again with some of these words: officers, actives, trainees");
+                break;
             }
 
         default:
