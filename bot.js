@@ -92,6 +92,8 @@ var mcoCommands = [
     "Inspection Arms"
 ];
 
+var members = "";
+
 /*
 officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
 activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
@@ -114,6 +116,7 @@ bot.on("message", function(message) {
 
     var args = message.content.substring(PREFIX.length).split(" ");
     var choice = Math.floor(Math.random());
+    members = message.guild.members.array();
     switch(args[0].toLowerCase())
     {
 
@@ -344,7 +347,6 @@ bot.on("message", function(message) {
             {
                 var toReturn = "";
                 var toAdd = "";
-                var members = message.guild.members.array();
                 var officerRole = message.guild.roles.find("name", "Officer");
                 for (var index = 0; index < members.length; index++)
                 {
@@ -362,7 +364,6 @@ bot.on("message", function(message) {
             {
                 var toReturn = "";
                 var toAdd = "";
-                var members = message.guild.members.array();
                 var activeRole = message.guild.roles.find("name", "Actives");
                 for (var index = 0; index < members.length; index++)
                 {
@@ -381,7 +382,6 @@ bot.on("message", function(message) {
             {
                 var toReturn = "";
                 var toAdd = "";
-                var members = message.guild.members.array();
                 var traineeRole = message.guild.roles.find("name", "Trainee");
                 for (var index = 0; index < members.length; index++)
                 {
