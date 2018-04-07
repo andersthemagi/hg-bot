@@ -436,8 +436,8 @@ bot.on("message", function(message) {
                     .done(function() {});
                     */
 
-                    fs.appendFileSync("./rosters/officers.txt", toAdd, "utf8");
-                    fs.writeFileSync("./rosters/officers.txt", officerRoster + toAdd, "utf8");
+                    fs.appendFileSync("./rosters/officers.txt", toAdd, {"encoding" : "utf-8"});
+                    fs.writeFileSync("./rosters/officers.txt", officerRoster + toAdd, {"encoding" : "utf-8"});
                     officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding" : "utf-8"});
                     message.channel.send(`Added ${toAdd} to the officers roster!`);
                     break;
