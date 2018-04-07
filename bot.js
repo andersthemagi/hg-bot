@@ -8,7 +8,7 @@ var bot = new Discord.Client();
 var gh = GitHub.new({
     username: process.env.GIT_USER,
     password: process.env.GIT_PASSWORD
-})
+});
 var repo = gh.getRepo(process.env.GIT_USER, "hg-bot");
 var branch = repo.getDefaultBranch();
 
