@@ -283,6 +283,56 @@ bot.on("message", function(message) {
             setTimeout(printNames, 31000);
             break;
 
+        case "resources":
+            var toReturn = "";
+            var topic = args[1].toLowerCase();
+
+            function printResources()
+            {
+                message.channel.send(`Here's what I have about ${topic}! \n` + toReturn);
+            }
+
+            if (topic == "af-dnc")
+            {
+                toReturn = "http://static.e-publishing.af.mil/production/1/af_a1/publication/afman36-2203/afman36-2203.pdf";
+                topic = "Air Force Drill and Ceremonies Manual (AFMAN36-2203)";
+                printResources();
+                break;
+            }
+            else if (topic == "mc-dnc")
+            {
+                toReturn = "http://www.marines.mil/Portals/59/Publications/MCO%20P5060.20%20W%20CH%201.pdf"
+                topic = "Marine Corps Orders P5060.20 Appendix A";
+                printResources();
+                break;
+            }
+            else if (topic == "af")
+            {
+                toReturn = "http://static.e-publishing.af.mil/production/1/af_a1/publication/afi36-2903/afi36-2903.pdf";
+                topic = "Air Force Dress and Appearance Standards (AFMAN36-2903)";
+                printResources();
+                break;
+            }
+            else if (topic == "af-hg")
+            {
+                toReturn = "http://static.e-publishing.af.mil/production/1/af_a1/publication/afman34-515/afman34-515.pdf";
+                topic = "Air Force Honor Guard Manual (AFMAN 34-515)";
+                printResources();
+                break;
+            }            }
+            else if (topic == "facebook" || topic == "fb")
+            {
+                toReturn = "https://www.facebook.com/NAUHonorGuard/";
+                topic = "NAU Honor Guard Facebook Page";
+                printResources();
+                break;
+            }
+            else
+            {
+                message.channel.send(`Sorry! I can't find anything on ${topic}. Hopefully it'll be added to my library soon!`);
+                break;
+            }
+
         case "roster":
             if (args[1] == "all")
             {
@@ -361,7 +411,7 @@ bot.on("message", function(message) {
             break;
 
         default:
-            message.channel.send("I don't understand what to do with that command. Please use >help to get a list of possible commands to give me!")
+            message.channel.send("I don't understand what to do with that command. Please use >help to get a list of possible commands to give me!");
         }
 });
 
