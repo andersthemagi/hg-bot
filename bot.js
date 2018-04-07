@@ -431,6 +431,24 @@ bot.on("message", function(message) {
                 message.channel.send(traineeRoster);
                 break;
             }
+            else if (args[1] == "bots")
+            {
+                var toReturn = "";
+                var members = message.guild.members.array();
+                var botRole = message.guild.roles.find("name", "Bots");
+                for (var index = 0; index < members.length; index++)
+                {
+
+                    if (members[index].roles.has(officerRole))
+                    {
+                        toReturn += members[index].toString();
+                        toReturn += "\n";
+                    }
+                }
+                message.channel.send("Here's a list of all our bots: ");
+                message.channel.send(toReturn);
+                break;
+            }
             else if (args[1] == "add")
             {
                 var toAdd = "";
