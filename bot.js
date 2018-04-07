@@ -344,61 +344,47 @@ bot.on("message", function(message) {
 
 
         case "roster":
-            if (args[1] == "officers")
+            function getUsers(role)
             {
                 var toReturn = "";
                 var toAdd = "";
-                var officerRole = message.guild.roles.find("name", "Officer");
-                var officers = [];
-                for (var index = 0; index < members.length; index++)
+                var sortedMembers = [];
+                for (var index = 0; index < members.length; index++);
                 {
-                    if (members[index].roles.has(officerRole.id))
+                    if(members[index].roles.has(role.id))
                     {
-                        officers.push(members[index].nickname);
+                        sortedMembers.push(members[index].nickname);
                     }
                 }
-                officers.sort();
-                for (var index = 0; index < officers.length; index++)
+                sortedMembers.sort();
+                for (var index = 0; index < sortedMembers.length; index++)
                 {
-                    toAdd = officers[index];
+                    toAdd = sortedMembers[index];
                     toReturn += toAdd + "\n";
                 }
+                return toReturn;
+            }
+
+            if (args[1] == "officers")
+            {
+                var officerRole = message.guild.roles.find("name", "Officer");
+                var toReturn = getUsers(officerRole);
                 message.channel.send("Here's a list of all our officers: \n");
                 message.channel.send(toReturn);
                 break;
             }
             else if (args[1] == "actives")
             {
-                var toReturn = "";
-                var toAdd = "";
                 var activeRole = message.guild.roles.find("name", "Actives");
-                for (var index = 0; index < members.length; index++)
-                {
-                    if (members[index].roles.has(activeRole.id))
-                    {
-                        toAdd = members[index].toString();
-                        toReturn += toAdd;
-                        toReturn += "\n";
-                    }
-                }
+                var toReturn = getUsers(activeRole);
                 message.channel.send("Here's a list of all our actives: \n");
                 message.channel.send(toReturn);
                 break;
             }
             else if (args[1] == "trainees")
             {
-                var toReturn = "";
-                var toAdd = "";
                 var traineeRole = message.guild.roles.find("name", "Trainees");
-                for (var index = 0; index < members.length; index++)
-                {
-                    if (members[index].roles.has(traineeRole.id))
-                    {
-                        toAdd = members[index].toString();
-                        toReturn += toAdd;
-                        toReturn += "\n";
-                    }
-                }
+                var toReturn = getUsers(traineeRole);
                 message.channel.send("Here's a list of all our trainees: \n");
                 message.channel.send(toReturn);
                 break;
