@@ -344,6 +344,7 @@ bot.on("message", function(message) {
                 toReturn += activeRoster;
                 toReturn += "Trainees:\n";
                 toReturn += traineeRoster;
+                message.channel.send(toReturn);
             }
             else if (args[1] == "officers")
             {
@@ -353,6 +354,8 @@ bot.on("message", function(message) {
                     break;
                 }
                 message.channel.send("Here is a list of our officers and their positions: ")
+                message.channel.send(officerRoster);
+                break;
             }
             else if (args[1] == "actives")
             {
@@ -363,6 +366,7 @@ bot.on("message", function(message) {
                 }
                 message.channel.send("Here is a roster of all our current actives: ");
                 message.channel.send(activeRoster);
+                break;
             }
             else if (args[1] == "trainees")
             {
@@ -373,6 +377,7 @@ bot.on("message", function(message) {
                 }
                 message.channel.send("Here is a roster of all our current trainees: ");
                 message.channel.send(traineeRoster);
+                break;
             }
             else if (args[1] == "add")
             {
@@ -407,12 +412,13 @@ bot.on("message", function(message) {
                 else
                 {
                     message.channel.send("I can't add to a list that ain't there. Try again with an actual roster. ");
+                    break;
                 }
             }
-            break;
 
         default:
             message.channel.send("I don't understand what to do with that command. Please use >help to get a list of possible commands to give me!");
+            break;
         }
 });
 
