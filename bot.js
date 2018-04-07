@@ -394,8 +394,8 @@ bot.on("message", function(message) {
                 message.channel.send(officerRoster);
                 */
                 var toReturn = "";
-                var members = guild.members.array();
-                var officerRole = guild.roles.find("name", "Officers");
+                var members = message.guild.members.array();
+                var officerRole = message.guild.roles.find("name", "Officers");
                 for (var index = 0; index < members.length; index++)
                 {
 
