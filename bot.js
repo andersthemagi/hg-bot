@@ -5,14 +5,14 @@ var GitHub = require("github-client");
 var fs = require("fs");
 
 var bot = new Discord.Client();
-/*
+
 var gh = GitHub.new({
     username: process.env.GIT_USER,
     password: process.env.GIT_PASSWORD
 });
 var repo = gh.getRepo(process.env.GIT_USER, "hg-bot");
 var branch = repo.getDefaultBranch();
-*/
+
 
 const PREFIX = ">";
 
@@ -100,25 +100,25 @@ var mcoCommands = [
     "15 Count Manual of Arms",
     "Inspection Arms"
 ];
-/*
+
 var isBinary = false;
 var officerRoster = "";
 var activeRoster = "";
 var traineeRoster = "";
+
+
+/*
+officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
+activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
+traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding": "utf-8"});
 */
-
-
-var officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
-var activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
-var traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding": "utf-8"});
-
 
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
 
     //Gets the rosters from the github repository for usage in the command.
-    /*
+
     branch.read("./rosters/officers.txt" , isBinary)
     .done(function(contents) {
         officerRoster = contents;
@@ -131,7 +131,7 @@ bot.on("ready", function(message) {
     .done(function(contents) {
         traineeRoster = contents;
     }).fail(function(err) {});
-    */
+    
 
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
