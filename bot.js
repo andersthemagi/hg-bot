@@ -5,12 +5,14 @@ var GitHub = require("github-client");
 var fs = require("fs");
 
 var bot = new Discord.Client();
+/*
 var gh = GitHub.new({
     username: process.env.GIT_USER,
     password: process.env.GIT_PASSWORD
 });
 var repo = gh.getRepo(process.env.GIT_USER, "hg-bot");
 var branch = repo.getDefaultBranch();
+*/
 
 const PREFIX = ">";
 
@@ -98,16 +100,18 @@ var mcoCommands = [
     "15 Count Manual of Arms",
     "Inspection Arms"
 ];
+/*
 var isBinary = false;
 var officerRoster = "";
 var activeRoster = "";
 var traineeRoster = "";
+*/
 
-/*
+
 var officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
 var activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
 var traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding": "utf-8"});
-*/
+
 
 bot.on("ready", function(message) {
     console.log(" ");
@@ -411,8 +415,10 @@ bot.on("message", function(message) {
             else if (args[1] == "add")
             {
                 var toAdd = "";
+                /*
                 var content = "";
                 var message = "";
+                */
                 for (var index = 3; index < args.length; index++)
                 {
                     toAdd += args[index];
@@ -421,14 +427,16 @@ bot.on("message", function(message) {
 
                 if (args[2] == "officers")
                 {
+                    /*
                     content = officerRoster + toAdd;
                     message = "";
                     branch.write("./rosters/officers.txt", content, message, isBinary)
                     .done(function() {});
-                    /*
-                    fs.appendFileSync("./rosters/officers.txt", toAdd, "utf8");
-                    officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding" : "utf-8"});
                     */
+
+                    fs.appendFileSync("./rosters/officers.txt", toAdd, "utf8");
+                    fs.writeFileSync("./rosters/officers.txt", officerRoster + toAdd, "utf8");
+                    officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding" : "utf-8"});
                     message.channel.send(`Added ${toAdd} to the officers roster!`);
                     break;
                 }
