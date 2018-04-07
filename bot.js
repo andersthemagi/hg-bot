@@ -402,6 +402,7 @@ bot.on("message", function(message) {
                     if (members[index].roles.has(officerRole.id))
                     {
                         toAdd = members[index].toString();
+                        toAdd = toAdd.substring(1);
                         toReturn += toAdd;
                         toReturn += "\n";
                     }
