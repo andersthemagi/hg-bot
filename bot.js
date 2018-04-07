@@ -411,6 +411,8 @@ bot.on("message", function(message) {
             else if (args[1] == "add")
             {
                 var toAdd = "";
+                var content = "";
+                var message = "";
                 for (var index = 3; index < args.length; index++)
                 {
                     toAdd += args[index];
