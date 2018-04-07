@@ -340,20 +340,6 @@ bot.on("message", function(message) {
 
 
         case "roster":
-            /*
-            if (args[1] == "all")
-            {
-                message.channel.send("Here's a list of all the members of Honor Guard by classification: ");
-                var toReturn = "Officers:\n";
-                toReturn += officerRoster;
-                toReturn += "\nActives:\n";
-                toReturn += activeRoster;
-                toReturn += "\nTrainees:\n";
-                toReturn += traineeRoster;
-                message.channel.send(toReturn);
-                break;
-            }
-            */
             if (args[1] == "officers")
             {
                 var toReturn = "";
@@ -373,103 +359,48 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
-            /*
             else if (args[1] == "actives")
             {
-                if (activeRoster == "")
+                var toReturn = "";
+                var toAdd = "";
+                var members = message.guild.members.array();
+                var activeRole = message.guild.roles.find("name", "Actives");
+                for (var index = 0; index < members.length; index++)
                 {
-                    message.channel.send("No actives on the roster! That's weird.");
-                    break;
+                    if (members[index].roles.has(activeRole.id))
+                    {
+                        toAdd = members[index].toString();
+                        toReturn += toAdd;
+                        toReturn += "\n";
+                    }
                 }
-                message.channel.send("Here is a roster of all our current actives: ");
-                message.channel.send(activeRoster);
+                message.channel.send("Here's a list of all our actives: \n");
+                message.channel.send(toReturn);
                 break;
             }
             else if (args[1] == "trainees")
             {
-                if (traineeRoster == "")
-                {
-                    message.channel.send("No Trainees on the roster!")
-                    break;
-                }
-                message.channel.send("Here is a roster of all our current trainees: ");
-                message.channel.send(traineeRoster);
-                break;
-            }
-            else if (args[1] == "bots")
-            {
                 var toReturn = "";
+                var toAdd = "";
                 var members = message.guild.members.array();
-                var botRole = message.guild.roles.find("name", "Bots");
+                var traineeRole = message.guild.roles.find("name", "Trainee");
                 for (var index = 0; index < members.length; index++)
                 {
-
-                    if (members[index].roles.has(officerRole))
+                    if (members[index].roles.has(traineeRole.id))
                     {
-                        toReturn += members[index].toString();
+                        toAdd = members[index].toString();
+                        toReturn += toAdd;
                         toReturn += "\n";
                     }
                 }
-                message.channel.send("Here's a list of all our bots: ");
+                message.channel.send("Here's a list of all our trainees: \n");
                 message.channel.send(toReturn);
                 break;
             }
-            */
-            /*
-            else if (args[1] == "add")
+            else
             {
-                var toAdd = "";
-                /*
-                var content = "";
-                var message = "";
-                */
-                /*
-                for (var index = 3; index < args.length; index++)
-                {
-                    toAdd += args[index];
-                }
-                toAdd += "\n";
-
-                if (args[2] == "officers")
-                {
-                    /*
-                    content = officerRoster + toAdd;
-                    message = "";
-                    branch.write("./rosters/officers.txt", content, message, isBinary)
-                    .done(function() {});
-                    */
-                    /*
-                    fs.appendFileSync("./rosters/officers.txt", toAdd, {"encoding" : "utf-8"});
-                    fs.writeFileSync("./rosters/officers.txt", officerRoster + toAdd, {"encoding" : "utf-8"});
-                    officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding" : "utf-8"});
-                    message.channel.send(`Added ${toAdd} to the officers roster!`);
-                    break;
-
-                }
-                /*
-                else if (args[2] == "actives")
-                {
-                    fs.appendFileSync("./rosters/actives.txt", toAdd, "utf8");
-                    activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding" : "utf-8"});
-                    message.channel.send(`Added ${toAdd} to the actives roster!`);
-                    break;
-                }
-                else if (args[2] == "trainees")
-                {
-                    fs.appendFileSync("./rosters/trainees.txt", toAdd, "utf8");
-                    traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding" : "utf-8"});
-                    message.channel.send(`Added ${toAdd} to the trainee roster!`);
-                    break;
-                }
-                */
-                else
-                {
-                    message.channel.send("I can't add to a list that ain't there. Try again with an actual roster. ");
-                    break;
-                }
-            /*
+                message.channel.send("I don't have any rosters about that. Try again with some of these words: officers, actives, trainees");
             }
-            */
 
         default:
             message.channel.send("I don't understand what to do with that command. Please use >help to get a list of possible commands to give me!");
