@@ -354,15 +354,9 @@ bot.on("message", function(message) {
                 {
                     if (members[index].roles.has(officerRole.id))
                     {
-                        officers.push(members[index].nickname.toString());
+                        toAdd = officers[index].toString();
+                        toReturn += toAdd + "\n";
                     }
-                }
-                officers.shift();
-                officers.sort();
-                for (var index = 0; index < officers.length; index++)
-                {
-                    toAdd = officers[index].toString();
-                    toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our officers: \n");
                 message.channel.send(toReturn);
