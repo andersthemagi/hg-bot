@@ -319,7 +319,7 @@ bot.on("message", function(message) {
                 topic = "Air Force Honor Guard Manual (AFMAN 34-515)";
                 printResources();
                 break;
-            }            }
+            }
             else if (topic == "facebook" || topic == "fb")
             {
                 toReturn = "https://www.facebook.com/NAUHonorGuard/";
@@ -329,9 +329,10 @@ bot.on("message", function(message) {
             }
             else
             {
-                message.channel.send(`Sorry! I can't find anything on ${topic}. Hopefully it'll be added to my library soon!`);
-                break;
+            	message.channel.send(`Sorry! I can't find anything on ${topic}. Hopefully it'll be added to my library soon!`);
+            	break;
             }
+
 
         case "roster":
             if (args[1] == "all")
