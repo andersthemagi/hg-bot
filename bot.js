@@ -399,7 +399,7 @@ bot.on("message", function(message) {
                 for (var index = 0; index < members.length; index++)
                 {
 
-                    if (members[index].roles.has(officerRole))
+                    if (members[index].roles.has(officerRole.id))
                     {
                         toReturn += members[index].toString();
                         toReturn += "\n";
