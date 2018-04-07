@@ -382,7 +382,7 @@ bot.on("message", function(message) {
             {
                 var toReturn = "";
                 var toAdd = "";
-                var traineeRole = message.guild.roles.find("name", "Trainee");
+                var traineeRole = message.guild.roles.find("name", "Trainees");
                 for (var index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(traineeRole.id))
@@ -392,6 +392,7 @@ bot.on("message", function(message) {
                         toReturn += "\n";
                     }
                 }
+                if ()
                 message.channel.send("Here's a list of all our trainees: \n");
                 message.channel.send(toReturn);
                 break;
