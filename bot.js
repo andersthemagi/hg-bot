@@ -116,7 +116,7 @@ bot.on("message", function(message) {
 
     var args = message.content.substring(PREFIX.length).split(" ");
     var choice = Math.floor(Math.random());
-    members = message.guild.members.array();
+    members = message.guild.members.sort().array();
     switch(args[0].toLowerCase())
     {
 
@@ -392,7 +392,7 @@ bot.on("message", function(message) {
                         toReturn += "\n";
                     }
                 }
-                if ()
+
                 message.channel.send("Here's a list of all our trainees: \n");
                 message.channel.send(toReturn);
                 break;
