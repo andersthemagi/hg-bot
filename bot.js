@@ -394,6 +394,7 @@ bot.on("message", function(message) {
                 message.channel.send(officerRoster);
                 */
                 var toReturn = "";
+                var toAdd = "";
                 var members = message.guild.members.array();
                 var officerRole = message.guild.roles.find("name", "Officer");
                 for (var index = 0; index < members.length; index++)
@@ -401,11 +402,12 @@ bot.on("message", function(message) {
 
                     if (members[index].roles.has(officerRole.id))
                     {
-                        toReturn += members[index].toString();
+                        toAdd = members[index].toString();
+                        toReturn += toAdd.splice(1);
                         toReturn += "\n";
                     }
                 }
-                message.channel.send("Here's a list of all our officers: ");
+                message.channel.send("Here's a list of all our officers: \n");
                 message.channel.send(toReturn);
                 break;
             }
