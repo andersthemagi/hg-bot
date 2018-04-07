@@ -378,11 +378,10 @@ bot.on("message", function(message) {
                     }
                 }
                 officers.sort();
-                var tempStorage = [];
                 var tempString = "";
                 for (var index = 0; index < officers.length; index++)
                 {
-                    tempStorage = officers[index].split(" ");
+                    var tempStorage = officers[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
                     for (var index = 0; index < tempStorage.length - 1; index++)
                     {
