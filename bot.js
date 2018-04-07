@@ -353,7 +353,7 @@ bot.on("message", function(message) {
                 {
                     if (members[index].roles.has(officerRole.id))
                     {
-                        officers.push(members[index]);
+                        officers.push(members[index].nickname);
                     }
                 }
                 officers.sort();
