@@ -344,16 +344,12 @@ bot.on("message", function(message) {
             {
                 var toReturn = "";
                 var toAdd = "";
-                var members = message.guild.members.array();
                 var officerRole = message.guild.roles.find("name", "Officer");
+                var members = message.guild.roles.get(officerRole.id).members;
                 for (var index = 0; index < members.length; index++)
                 {
-                    if (members[index].roles.has(officerRole.id))
-                    {
-                        toAdd = members[index].toString();
-                        toReturn += toAdd;
-                        toReturn += "\n";
-                    }
+                    toAdd = members[index].toString();
+                    toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our officers: \n");
                 message.channel.send(toReturn);
