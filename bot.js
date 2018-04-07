@@ -118,6 +118,7 @@ bot.on("ready", function(message) {
     bot.user.setGame("Counter March");
 
     //Gets the rosters from the github repository for usage in the command.
+    /*
     branch.read("./rosters/officers.txt" , isBinary)
     .done(function(contents) {
         officerRoster = contents;
@@ -130,6 +131,7 @@ bot.on("ready", function(message) {
     .done(function(contents) {
         traineeRoster = contents;
     }).fail(function(err) {});
+    */
 
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
