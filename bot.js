@@ -1,18 +1,9 @@
 "use strict";
 
 var Discord = require("discord.js");
-var GitHub = require("github-client");
 var fs = require("fs");
 
 var bot = new Discord.Client();
-
-var gh = GitHub.new({
-    username: process.env.GIT_USER,
-    password: process.env.GIT_PASSWORD
-});
-var repo = gh.getRepo(process.env.GIT_USER, "hg-bot");
-var branch = repo.getDefaultBranch();
-
 
 const PREFIX = ">";
 
@@ -101,12 +92,6 @@ var mcoCommands = [
     "Inspection Arms"
 ];
 
-var isBinary = false;
-var officerRoster = "";
-var activeRoster = "";
-var traineeRoster = "";
-
-
 /*
 officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
 activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
@@ -118,20 +103,6 @@ bot.on("ready", function(message) {
     bot.user.setGame("Counter March");
 
     //Gets the rosters from the github repository for usage in the command.
-
-    branch.read("./rosters/officers.txt" , isBinary)
-    .done(function(contents) {
-        officerRoster = contents;
-    }).fail(function(err) {});
-    branch.read("./rosters/actives.txt", isBinary)
-    .done(function(contents) {
-        activeRoster = contents;
-    }).fail(function(err) {});
-    branch.read("./rosters/trainees.txt", isBinary)
-    .done(function(contents) {
-        traineeRoster = contents;
-    }).fail(function(err) {});
-    
 
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
@@ -411,6 +382,7 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
+            /*
             else if (args[1] == "actives")
             {
                 if (activeRoster == "")
@@ -451,6 +423,8 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
+            */
+            /*
             else if (args[1] == "add")
             {
                 var toAdd = "";
@@ -458,6 +432,7 @@ bot.on("message", function(message) {
                 var content = "";
                 var message = "";
                 */
+                /*
                 for (var index = 3; index < args.length; index++)
                 {
                     toAdd += args[index];
@@ -472,12 +447,13 @@ bot.on("message", function(message) {
                     branch.write("./rosters/officers.txt", content, message, isBinary)
                     .done(function() {});
                     */
-
+                    /*
                     fs.appendFileSync("./rosters/officers.txt", toAdd, {"encoding" : "utf-8"});
                     fs.writeFileSync("./rosters/officers.txt", officerRoster + toAdd, {"encoding" : "utf-8"});
                     officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding" : "utf-8"});
                     message.channel.send(`Added ${toAdd} to the officers roster!`);
                     break;
+
                 }
                 /*
                 else if (args[2] == "actives")
@@ -500,7 +476,9 @@ bot.on("message", function(message) {
                     message.channel.send("I can't add to a list that ain't there. Try again with an actual roster. ");
                     break;
                 }
+            /*
             }
+            */
 
         default:
             message.channel.send("I don't understand what to do with that command. Please use >help to get a list of possible commands to give me!");
