@@ -348,7 +348,7 @@ bot.on("message", function(message) {
                 var toReturn = "";
                 var toAdd = "";
                 var officerRole = message.guild.roles.find("name", "Officer");
-                var officers = [];
+                var officers = ["shit"];
                 for (var index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(officerRole.id))
@@ -356,6 +356,7 @@ bot.on("message", function(message) {
                         officers.push(members[index].nickname);
                     }
                 }
+                officers.shift();
                 officers.sort();
                 for (var index = 0; index < officers.length; index++)
                 {
