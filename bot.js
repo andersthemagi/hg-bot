@@ -340,6 +340,7 @@ bot.on("message", function(message) {
 
 
         case "roster":
+            /*
             if (args[1] == "all")
             {
                 message.channel.send("Here's a list of all the members of Honor Guard by classification: ");
@@ -352,18 +353,9 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
-            else if (args[1] == "officers")
+            */
+            if (args[1] == "officers")
             {
-
-                if (officerRoster == "")
-                {
-                    message.channel.send("No officers on the roster. Weird as shit.");
-                    break;
-                }
-                /*
-                message.channel.send("Here is a list of our officers and their positions: ")
-                message.channel.send(officerRoster);
-                */
                 var toReturn = "";
                 var toAdd = "";
                 var members = message.guild.members.array();
@@ -373,7 +365,6 @@ bot.on("message", function(message) {
                     if (members[index].roles.has(officerRole.id))
                     {
                         toAdd = members[index].toString();
-                        toAdd = toAdd.substring(1);
                         toReturn += toAdd;
                         toReturn += "\n";
                     }
