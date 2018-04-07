@@ -1,12 +1,18 @@
 "use strict";
 
-const Discord = require("discord.js");
+var Discord = require("discord.js");
+var GitHub = require("github-client");
 var fs = require("fs");
 
-const PREFIX = ">";
-
-
 var bot = new Discord.Client();
+var gh = GitHub.new({
+    username: process.env.GIT_USER;
+    password: process.env.GIT_PASSWORD;
+})
+var repo = gh.getRepo(process.env.GIT_USER, "hg-bot");
+var branch = gh.getDefaultBranch();
+
+const PREFIX = ">";
 
 var vulgarResponses = [
     "Holy fuck open the fucking door? @everyone",
@@ -92,14 +98,35 @@ var mcoCommands = [
     "15 Count Manual of Arms",
     "Inspection Arms"
 ];
+var isBinary = false;
+var officerRoster = "";
+var activeRoster = "";
+var traineeRoster = "";
 
+/*
 var officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
 var activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
 var traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding": "utf-8"});
+*/
 
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
+
+    //Gets the rosters from the github repository for usage in the command.
+    branch.read("./rosters/officers.txt" , isBinary)
+    .done(function(contents) {
+        officerRoster = contents;
+    }).fail(function(err) {});
+    branch.read("./rosters/actives.txt", isBinary)
+    .done(function(contents) {
+        activeRoster = contents;
+    }).fail(function(err) {});
+    branch.read("./rosters/trainees.txt", isBinary)
+    .done(function(contents) {
+        traineeRoster = contents;
+    }).fail(function(err) {});
+
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
 
@@ -392,11 +419,18 @@ bot.on("message", function(message) {
 
                 if (args[2] == "officers")
                 {
+                    content = officerRoster + toAdd;
+                    message = "";
+                    branch.write("./rosters/officers.txt", content, message, isBinary)
+                    .done(function() {});
+                    /*
                     fs.appendFileSync("./rosters/officers.txt", toAdd, "utf8");
                     officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding" : "utf-8"});
+                    */
                     message.channel.send(`Added ${toAdd} to the officers roster!`);
                     break;
                 }
+                /*
                 else if (args[2] == "actives")
                 {
                     fs.appendFileSync("./rosters/actives.txt", toAdd, "utf8");
@@ -411,6 +445,7 @@ bot.on("message", function(message) {
                     message.channel.send(`Added ${toAdd} to the trainee roster!`);
                     break;
                 }
+                */
                 else
                 {
                     message.channel.send("I can't add to a list that ain't there. Try again with an actual roster. ");
