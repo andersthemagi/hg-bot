@@ -401,14 +401,14 @@ bot.on("message", function(message) {
                 {
                     fs.appendFileSync("./rosters/actives.txt", toAdd, "utf8");
                     activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding" : "utf-8"});
-                    message.channel.send('Added ${toAdd} to the actives roster!');
+                    message.channel.send(`Added ${toAdd} to the actives roster!`);
                     break;
                 }
                 else if (args[2] == "trainees")
                 {
                     fs.appendFileSync("./rosters/trainees.txt", toAdd, "utf8");
                     traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding" : "utf-8"});
-                    message.channel.send('Added ${toAdd} to the trainee roster!');
+                    message.channel.send(`Added ${toAdd} to the trainee roster!`);
                     break;
                 }
                 else
