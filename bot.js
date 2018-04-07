@@ -341,11 +341,12 @@ bot.on("message", function(message) {
                 message.channel.send("Here's a list of all the members of Honor Guard by classification: ");
                 var toReturn = "Officers:\n";
                 toReturn += officerRoster;
-                toReturn += "Actives:\n";
+                toReturn += "\nActives:\n";
                 toReturn += activeRoster;
-                toReturn += "Trainees:\n";
+                toReturn += "\nTrainees:\n";
                 toReturn += traineeRoster;
                 message.channel.send(toReturn);
+                break;
             }
             else if (args[1] == "officers")
             {
