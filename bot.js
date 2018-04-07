@@ -404,7 +404,7 @@ bot.on("message", function(message) {
                     message.channel.send('Added ${toAdd} to the actives roster!');
                     break;
                 }
-                else if (args[3] == "trainees")
+                else if (args[2] == "trainees")
                 {
                     fs.appendFileSync("./rosters/trainees.txt", toAdd, "utf8");
                     traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding" : "utf-8"});
