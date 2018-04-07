@@ -399,11 +399,10 @@ bot.on("message", function(message) {
                 var officerRole = message.guild.roles.find("name", "Officer");
                 for (var index = 0; index < members.length; index++)
                 {
-
                     if (members[index].roles.has(officerRole.id))
                     {
                         toAdd = members[index].toString();
-                        toReturn += toAdd.splice(1, toAdd.length - 1);
+                        toReturn += toAdd;
                         toReturn += "\n";
                     }
                 }
