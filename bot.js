@@ -346,7 +346,7 @@ bot.on("message", function(message) {
                 var toAdd = "";
                 var officerRole = message.guild.roles.find("name", "Officer");
                 var members = message.guild.roles.get(officerRole.id).members;
-                for (var index = 0; index < members.size; index++)
+                for (var index = 0; index < members.length; index++)
                 {
                     toAdd = members[index].toString();
                     toReturn += toAdd + "\n";
