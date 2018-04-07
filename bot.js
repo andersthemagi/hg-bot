@@ -348,13 +348,19 @@ bot.on("message", function(message) {
                 var toReturn = "";
                 var toAdd = "";
                 var officerRole = message.guild.roles.find("name", "Officer");
+                var officers = [];
                 for (var index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(officerRole.id))
                     {
-                        toAdd = members[index].toString();
-                        toReturn += toAdd + "\n";
+                        officers.push(members[index]);
                     }
+                }
+                officers.sort();
+                for (var index = 0; index < officers.length; index++)
+                {
+                    toAdd = officers[index].toString();
+                    toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our officers: \n");
                 message.channel.send(toReturn);
