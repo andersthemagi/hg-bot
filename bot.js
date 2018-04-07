@@ -100,6 +100,7 @@ var traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding": "utf-
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
+    bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
 
 bot.on("message", function(message) {
