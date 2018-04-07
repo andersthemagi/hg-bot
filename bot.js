@@ -383,13 +383,30 @@ bot.on("message", function(message) {
             }
             else if (args[1] == "officers")
             {
+
                 if (officerRoster == "")
                 {
                     message.channel.send("No officers on the roster. Weird as shit.");
                     break;
                 }
+                /*
                 message.channel.send("Here is a list of our officers and their positions: ")
                 message.channel.send(officerRoster);
+                */
+                var toReturn = "";
+                var members = guild.members.array();
+                var officerRole = guild.roles.find("name", "Officers");
+                for (var index = 0; index < members.length; index++)
+                {
+
+                    if (members[index].roles.has(officerRole))
+                    {
+                        toReturn += members[index].toString();
+                        toReturn += "\n";
+                    }
+                }
+                message.channel.send("Here's a list of all our officers: ");
+                message.channel.send(toReturn);
                 break;
             }
             else if (args[1] == "actives")
