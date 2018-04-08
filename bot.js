@@ -153,8 +153,8 @@ bot.on("ready", function(message) {
     //Runs the purge commands every 12 hours once it's initialized.
     setInterval(purgeInterval, (1000 * 60 * 60 * 12));
 
-
-    bot.channels.get("412443638560456714").send("HONOR GUARD BOT INITIALIZED\n**VERSION 1.6.2**\nRECENT CHANGES: \n- FIXED ARGUMENT HANDLING ISSUES WITH COMMANDS\n-ADDED AUTO PURGING FUNCTIONALITY FOR EVENT NOTIFICATIONS");
+    var barrierString = "\n ================================================= \n";
+    bot.channels.get("412443638560456714").send(barrierString + "HONOR GUARD BOT INITIALIZED\n**VERSION 1.6.2**\nRECENT CHANGES: \n- FIXED ARGUMENT HANDLING ISSUES WITH COMMANDS\n-ADDED AUTO PURGING FUNCTIONALITY FOR EVENT NOTIFICATIONS" + barrierString);
 });
 
 bot.on("message", function(message) {
