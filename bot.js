@@ -344,6 +344,7 @@ bot.on("message", function(message) {
 
         case "roster":
             var toReturn = "", toAdd = "", tempString = "";
+            var tempStorage;
             if (args[1] == "officers")
             {
                 var officerRole = message.guild.roles.find("name", "Officer");
@@ -358,7 +359,7 @@ bot.on("message", function(message) {
                 officers.sort();
                 for (var index = 0; index < officers.length; index++)
                 {
-                    var tempStorage = officers[index].split(" ");
+                    tempStorage = officers[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
                     for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
@@ -390,7 +391,7 @@ bot.on("message", function(message) {
                 actives.sort();
                 for (var index = 0; index < actives.length; index++)
                 {
-                    var tempStorage = actives[index].split(" ");
+                    tempStorage = actives[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
                     for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
@@ -422,7 +423,7 @@ bot.on("message", function(message) {
                 trainees.sort();
                 for (var index = 0; index < trainees.length; index++)
                 {
-                    var tempStorage = trainees[index].split(" ");
+                    tempStorage = trainees[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
                     for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
