@@ -361,7 +361,12 @@ bot.on("message", function(message) {
                 message.channel.send(`Here's what I have about ${topic}! \n` + toReturn);
             }
 
-            if (topic == "af-dnc")
+            if (args.length < 2)
+            {
+                message.channel.send("You didn't put any arguments in bud, what's going on?");
+                break;
+            }
+            else if (topic == "af-dnc")
             {
                 toReturn = "http://static.e-publishing.af.mil/production/1/af_a1/publication/afman36-2203/afman36-2203.pdf";
                 topic = "Air Force Drill and Ceremonies Manual (AFMAN36-2203)";
@@ -394,11 +399,6 @@ bot.on("message", function(message) {
                 toReturn = "https://www.facebook.com/NAUHonorGuard/";
                 topic = "NAU Honor Guard Facebook Page";
                 printResources();
-                break;
-            }
-            else if (args.length < 2)
-            {
-                message.channel.send("You didn't put any arguments in bud, what's going on?");
                 break;
             }
             else
