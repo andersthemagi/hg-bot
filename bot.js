@@ -104,24 +104,28 @@ bot.on("ready", function(message) {
 
     bot.channels.get("412453444876500994").send(`$purge <#411700402279415812>`)
     .then(msg => {
-        msg.delete(10000);
+        msg.delete(1000 * 10);
     });
-    bot.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
-    .then(msg => {
-        msg.delete(10000);
-    });
+    setTimeout(function() {
+        bot.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
+        .then(msg => {
+            msg.delete(1000 * 10);
+        });
+    }, 1000 * 60);
 
 
     function purgeInterval()
     {
         bot.channels.get("412453444876500994").send(`$purge <#411700402279415812>`)
         .then(msg => {
-            msg.delete(10000);
+            msg.delete(1000 * 10);
         });
-        bot.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
-        .then(msg => {
-            msg.delete(10000);
-        });
+        setTimeout(function() {
+            bot.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
+            .then(msg => {
+                msg.delete(1000 * 10);
+            });
+        }, 1000 * 60);
     }
 
     //Runs the purge commands every hour once it's initialized.
