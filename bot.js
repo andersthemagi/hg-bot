@@ -379,7 +379,7 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
-            else if (args[1] == "actives")
+            if (args[1] == "actives")
             {
                 var toReturn = "";
                 var toAdd = "";
@@ -414,7 +414,7 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
-            else if (args[1] == "trainees")
+            if (args[1] == "trainees")
             {
                 var toReturn = "";
                 var toAdd = "";
