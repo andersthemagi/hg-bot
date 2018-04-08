@@ -99,7 +99,7 @@ bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
 
-    bot.channels.get("412453444876500994").send(`$purge ${generalChanne.name}`)
+    bot.channels.get("412453444876500994").send(`$purge ${generalChannel.name}`)
     .then(msg => {
         msg.delete(10000);
     })
