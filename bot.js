@@ -107,12 +107,12 @@ bot.on("ready", function(message) {
     {
         if (gameSwitch == 0)
         {
-            bot.user.setGame("Counter March!");
+            bot.user.setGame("Ready, hup!");
             gameSwitch++;
         }
         else if (gameSwitch == 1)
         {
-            bot.user.setGame("Version 1.5.2");
+            bot.user.setGame("Version 1.6.2");
             gameSwitch++;
         }
         else if(gameSwitch == 2)
@@ -154,7 +154,7 @@ bot.on("ready", function(message) {
     setInterval(purgeInterval, (1000 * 60 * 60 * 12));
 
 
-    bot.channels.get("412443638560456714").send("HONOR GUARD BOT INITIALIZED\n**VERSION 1.5.2**\nRECENT CHANGES: \n- ADDED AUTO PURGING OF EVENT REMINDERS EVERY 12 HOURS");
+    bot.channels.get("412443638560456714").send("HONOR GUARD BOT INITIALIZED\n**VERSION 1.6.2**\nRECENT CHANGES: \n- FIXED ARGUMENT HANDLING ISSUES WITH COMMANDS\n-ADDED AUTO PURGING FUNCTIONALITY FOR EVENT NOTIFICATIONS");
 });
 
 bot.on("message", function(message) {
@@ -297,7 +297,7 @@ bot.on("message", function(message) {
                 }
             }
             else if (args[1] != "full" || args[1] != "af" || args[1] != "afpro" || args[1] != "fullpro") {
-                message.channel.send("ERROR: Argument 1 is invalid. Command format: '>fde [af/full] [number]'");
+                message.channel.send("ERROR: Argument 1 is invalid. Command format: '>fde [af/full/afpro/fullpro] [number]'");
             }
             else if (args.length < 3)
             {
@@ -371,6 +371,7 @@ bot.on("message", function(message) {
                 message.channel.send("You didn't put any arguments in bud, what's going on?");
                 break;
             }
+
             else if (topic == "af-dnc")
             {
                 toReturn = "http://static.e-publishing.af.mil/production/1/af_a1/publication/afman36-2203/afman36-2203.pdf";
