@@ -102,11 +102,11 @@ bot.on("ready", function(message) {
     bot.user.setGame("Counter March");
 
 
-    guild.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
+    guild.channels.get("412453444876500994").send(`$purge <#411700402279415812>`)
     .then(msg => {
         msg.delete(10000);
     });
-    guild.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel}`)
+    guild.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
     .then(msg => {
         msg.delete(10000);
     });
@@ -114,11 +114,11 @@ bot.on("ready", function(message) {
 
     function purgeInterval()
     {
-        bot.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
+        bot.channels.get("412453444876500994").send(`$purge <#411700402279415812>`)
         .then(msg => {
             msg.delete(10000);
         });
-        bot.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel}`)
+        bot.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
         .then(msg => {
             msg.delete(10000);
         });
@@ -126,7 +126,7 @@ bot.on("ready", function(message) {
 
     //Runs the purge commands every hour once it's initialized.
     setInterval(purgeInterval, (1000 * 60 * 60));
-    
+
 
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
