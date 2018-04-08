@@ -354,6 +354,11 @@ bot.on("message", function(message) {
 
         case "resources":
             var toReturn = "";
+            if (args.length < 2)
+            {
+                message.channel.send("You didn't put any arguments in bud, what's going on?");
+                break;
+            }
             var topic = args[1].toLowerCase();
 
             function printResources()
@@ -361,7 +366,7 @@ bot.on("message", function(message) {
                 message.channel.send(`Here's what I have about ${topic}! \n` + toReturn);
             }
 
-            if (args.length < 2 || topic == "")
+            if (args.length < 2 || topic == "" || topic)
             {
                 message.channel.send("You didn't put any arguments in bud, what's going on?");
                 break;
