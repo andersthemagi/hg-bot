@@ -92,6 +92,7 @@ var mcoCommands = [
 ];
 
 var members = "";
+var gameSwitch = 0;
 /*
 var generalChannel = guild.channels.get("411700402279415812");
 var practiceEventsChannel = guild.channels.get("427504896468713485");
@@ -99,8 +100,29 @@ var practiceEventsChannel = guild.channels.get("427504896468713485");
 
 bot.on("ready", function(message) {
     console.log(" ");
-    bot.user.setGame("Counter March");
+    bot.user.setGame("Counter March!");
+    gameSwitch++;
 
+    function switchGame()
+    {
+        if (gameSwitch == 0)
+        {
+            bot.user.setGame("Counter March!");
+            gameSwitch++;
+        }
+        else if (gameSwitch == 1)
+        {
+            bot.user.setGame("Version 1.5.2");
+            gameSwitch++;
+        }
+        else if(gameSwitch == 2)
+        {
+            bot.user.setGame("Rewriting my own code...");
+            gameSwitch = 0;
+        }
+
+    }
+    setInterval(switchGame, 1000 * 60);
 
     bot.channels.get("412453444876500994").send(`$purge <#411700402279415812>`)
     .then(msg => {
@@ -128,11 +150,11 @@ bot.on("ready", function(message) {
         }, 1000 * 90);
     }
 
-    //Runs the purge commands every hour once it's initialized.
-    setInterval(purgeInterval, (1000 * 60 * 60));
+    //Runs the purge commands every 12 hours once it's initialized.
+    setInterval(purgeInterval, (1000 * 60 * 60 * 12));
 
 
-    bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
+    bot.channels.get("412443638560456714").send("HONOR GUARD BOT INITIALIZED\n**VERSION 1.5.2**\nRECENT CHANGES: \n- ADDED AUTO PURGING OF EVENT REMINDERS EVERY 12 HOURS");
 });
 
 bot.on("message", function(message) {
