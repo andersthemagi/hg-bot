@@ -99,7 +99,7 @@ bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
 
-
+    /*
     guild.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
     .then(msg => {
         msg.delete(10000);
@@ -108,7 +108,7 @@ bot.on("ready", function(message) {
     .then(msg => {
         msg.delete(10000);
     });
-
+    */
     /*
     function purgeInterval()
     {
