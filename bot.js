@@ -354,7 +354,7 @@ bot.on("message", function(message) {
 
         case "resources":
             var toReturn = "";
-            if (args.length < 2)
+            if (args.length == 1)
             {
                 message.channel.send("You didn't put any arguments in bud, what's going on?");
                 break;
