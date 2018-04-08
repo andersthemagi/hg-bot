@@ -99,12 +99,12 @@ bot.on("ready", function(message) {
 
     bot.channels.get("412453444876500994").send("$purge #practice_and_obm")
     .then(msg => {
-        msg.delete(1000);
+        msg.delete(10000);
     })
     .catch();
     bot.channels.get("412453444876500994").send("$purge #general")
     .then(msg => {
-        msg.delete(1000);
+        msg.delete(10000);
     })
     .catch();
 
@@ -112,15 +112,16 @@ bot.on("ready", function(message) {
     {
         bot.channels.get("412453444876500994").send("$purge #practice_and_obm")
         .then(msg => {
-            msg.delete(1000);
+            msg.delete(10000);
         })
         .catch();
         bot.channels.get("412453444876500994").send("$purge #general")
         .then(msg => {
-            msg.delete(1000);
+            msg.delete(10000);
         })
         .catch();
     }
+    //Runs the purge commands every hour once it's initialized.
     setInterval(purgeInterval, (1000 * 60 * 60));
 
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
