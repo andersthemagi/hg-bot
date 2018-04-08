@@ -342,7 +342,6 @@ bot.on("message", function(message) {
             	break;
             }
 
-
         case "roster":
             var toReturn = "", toAdd = "", tempString = "";
             if (args[1] == "officers")
@@ -377,9 +376,9 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
-            if (args[1] == "actives")
+            else if (args[1] == "actives")
             {
-                var activeRole = message.guild.roles.find("name", "Actives");
+                var activeRole = message.guild.roles.find("name", "Active");
                 var actives = [];
                 for (var index = 0; index < members.length; index++)
                 {
@@ -409,9 +408,9 @@ bot.on("message", function(message) {
                 message.channel.send(toReturn);
                 break;
             }
-            if (args[1] == "trainees")
+            else if(args[1] == "trainees")
             {
-                var traineeRole = message.guild.roles.find("name", "Trainees");
+                var traineeRole = message.guild.roles.find("name", "Trainee");
                 var trainees = [];
                 for (var index = 0; index < members.length; index++)
                 {
@@ -444,6 +443,7 @@ bot.on("message", function(message) {
             else
             {
                 message.channel.send("I don't have any rosters about that. Try again with some of these words: officers, actives, trainees");
+                break;
             }
 
         default:
