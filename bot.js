@@ -92,17 +92,19 @@ var mcoCommands = [
 ];
 
 var members = "";
+var generalChannel = bot.channels.get("411700402279415812");
+var practiceEventsChannel = bot.channels.get("427504896468713485");
 
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
 
-    bot.channels.get("412453444876500994").send("$purge #practice_and_obm")
+    bot.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
     .then(msg => {
         msg.delete(10000);
     })
     .catch();
-    bot.channels.get("412453444876500994").send("$purge #general")
+    bot.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel}`)
     .then(msg => {
         msg.delete(10000);
     })
@@ -110,12 +112,12 @@ bot.on("ready", function(message) {
 
     function purgeInterval()
     {
-        bot.channels.get("412453444876500994").send("$purge #practice_and_obm")
+        bot.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
         .then(msg => {
             msg.delete(10000);
         })
         .catch();
-        bot.channels.get("412453444876500994").send("$purge #general")
+        bot.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel}`)
         .then(msg => {
             msg.delete(10000);
         })
