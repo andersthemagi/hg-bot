@@ -102,11 +102,11 @@ bot.on("ready", function(message) {
     bot.user.setGame("Counter March");
 
 
-    guild.channels.get("412453444876500994").send(`$purge <#411700402279415812>`)
+    bot.channels.get("412453444876500994").send(`$purge <#411700402279415812>`)
     .then(msg => {
         msg.delete(10000);
     });
-    guild.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
+    bot.channels.get("412453444876500994").send(`$purge <#427504896468713485>`)
     .then(msg => {
         msg.delete(10000);
     });
