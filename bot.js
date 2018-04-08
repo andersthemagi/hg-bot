@@ -429,7 +429,7 @@ bot.on("message", function(message) {
                     toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our actives: \n");
-                var countString = `\n Total Actives: ${actives.length} \n`;
+                var countString = `\n Total Actives: ${actives.length} \n\n`;
                 message.channel.send(countString + toReturn);
                 break;
 
@@ -463,7 +463,7 @@ bot.on("message", function(message) {
                     toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our officers: \n");
-                message.channel.send(countString + toReturn);
+                message.channel.send(toReturn);
                 break;
             }
             else if(args[1] == "trainees")
@@ -495,7 +495,7 @@ bot.on("message", function(message) {
                     toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our trainees: \n");
-                var countString = `\n Total Trainees: ${trainees.length} \n`;
+                var countString = `\n Total Trainees: ${trainees.length} \n\n`;
                 message.channel.send(countString + toReturn);
                 break;
             }
