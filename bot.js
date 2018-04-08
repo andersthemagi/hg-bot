@@ -299,6 +299,11 @@ bot.on("message", function(message) {
             else if (args[1] != "full" || args[1] != "af" || args[1] != "afpro" || args[1] != "fullpro") {
                 message.channel.send("ERROR: Argument 1 is invalid. Command format: '>fde [af/full] [number]'");
             }
+            else if (args.length < 3)
+            {
+                message.channel.send("You didn't put the correct amount of arguments in bud, what's going on?");
+                break;
+            }
             returnString += "=================================\n";
             message.channel.send(returnString);
             break;
@@ -326,7 +331,7 @@ bot.on("message", function(message) {
             message.channel.send("@everyone Report your accountability! Type 'here' to be counted!");
             message.channel.awaitMessages(filter, {
                 max: 200,
-                time: 30000,
+                time: 1000 * 30,
                 errors: ['time']
             })
             .then(collected => {
@@ -389,6 +394,11 @@ bot.on("message", function(message) {
                 toReturn = "https://www.facebook.com/NAUHonorGuard/";
                 topic = "NAU Honor Guard Facebook Page";
                 printResources();
+                break;
+            }
+            else if (args.length < 2)
+            {
+                message.channel.send("You didn't put any arguments in bud, what's going on?");
                 break;
             }
             else
@@ -565,6 +575,11 @@ bot.on("message", function(message) {
                 var totalForce = actives.length + trainees.length;
                 var totalString = `Total Force for Honor Guard: ${totalForce} \n`;
                 message.channel.send(totalString + countStringTwo + countString);
+                break;
+            }
+            else if (args.length < 2)
+            {
+                message.channel.send("You didn't put any arguments in bud, what's going on?");
                 break;
             }
             else
