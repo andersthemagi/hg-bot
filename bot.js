@@ -344,10 +344,9 @@ bot.on("message", function(message) {
 
 
         case "roster":
+            var toReturn = "", toAdd = "", tempString = "";
             if (args[1] == "officers")
             {
-                var toReturn = "";
-                var toAdd = "";
                 var officerRole = message.guild.roles.find("name", "Officer");
                 var officers = [];
                 for (var index = 0; index < members.length; index++)
@@ -358,7 +357,6 @@ bot.on("message", function(message) {
                     }
                 }
                 officers.sort();
-                var tempString = "";
                 for (var index = 0; index < officers.length; index++)
                 {
                     var tempStorage = officers[index].split(" ");
@@ -381,8 +379,6 @@ bot.on("message", function(message) {
             }
             if (args[1] == "actives")
             {
-                var toReturn = "";
-                var toAdd = "";
                 var activeRole = message.guild.roles.find("name", "Actives");
                 var actives = [];
                 for (var index = 0; index < members.length; index++)
@@ -393,7 +389,6 @@ bot.on("message", function(message) {
                     }
                 }
                 actives.sort();
-                var tempString = "";
                 for (var index = 0; index < actives.length; index++)
                 {
                     var tempStorage = actives[index].split(" ");
@@ -416,8 +411,6 @@ bot.on("message", function(message) {
             }
             if (args[1] == "trainees")
             {
-                var toReturn = "";
-                var toAdd = "";
                 var traineeRole = message.guild.roles.find("name", "Trainees");
                 var trainees = [];
                 for (var index = 0; index < members.length; index++)
@@ -428,7 +421,6 @@ bot.on("message", function(message) {
                     }
                 }
                 trainees.sort();
-                var tempString = "";
                 for (var index = 0; index < trainees.length; index++)
                 {
                     var tempStorage = trainees[index].split(" ");
@@ -452,7 +444,6 @@ bot.on("message", function(message) {
             else
             {
                 message.channel.send("I don't have any rosters about that. Try again with some of these words: officers, actives, trainees");
-                break;
             }
 
         default:
