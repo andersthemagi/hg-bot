@@ -345,7 +345,39 @@ bot.on("message", function(message) {
         case "roster":
             var toReturn = "", toAdd = "", tempString = "";
             var tempStorage;
-            if (args[1] == "officers")
+            if(args[1] == "actives")
+            {
+                var activeRole = message.guild.roles.find("name", "Active");
+                var actives = [];
+                for (var index = 0; index < members.length; index++)
+                {
+                    if (members[index].roles.has(activeRole.id))
+                    {
+                        actives.push(members[index].nickname);
+                    }
+                }
+                actives.sort();
+                for (var index = 0; index < actives.length; index++)
+                {
+                    tempStorage = actives[index].split(" ");
+                    tempString = tempStorage[tempStorage.length - 1] + ", ";
+                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    {
+                        tempString += tempStorage[innerIndex] + " ";
+                    }
+                    actives[index] = tempString;
+                }
+                actives.sort();
+                for (var index = 0; index < actives.length; index++)
+                {
+                    toAdd = actives[index];
+                    toReturn += toAdd + "\n";
+                }
+                message.channel.send("Here's a list of all our actives in Honor Guard: \n");
+                message.channel.send(toReturn);
+                break;
+            }
+            else if (args[1] == "officers")
             {
                 var officerRole = message.guild.roles.find("name", "Officer");
                 var officers = [];
