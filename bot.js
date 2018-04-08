@@ -101,7 +101,7 @@ bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
 
-    /*
+
     guild.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
     .then(msg => {
         msg.delete(10000);
@@ -110,8 +110,8 @@ bot.on("ready", function(message) {
     .then(msg => {
         msg.delete(10000);
     });
-    */
-    /*
+
+
     function purgeInterval()
     {
         bot.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
@@ -126,7 +126,7 @@ bot.on("ready", function(message) {
 
     //Runs the purge commands every hour once it's initialized.
     setInterval(purgeInterval, (1000 * 60 * 60));
-    */
+    
 
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
