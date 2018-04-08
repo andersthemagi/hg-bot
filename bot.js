@@ -94,12 +94,6 @@ var mcoCommands = [
 
 var members = "";
 
-/*
-officerRoster = fs.readFileSync("./rosters/officers.txt", {"encoding": "utf-8"});
-activeRoster = fs.readFileSync("./rosters/actives.txt", {"encoding": "utf-8"});
-traineeRoster = fs.readFileSync("./rosters/trainees.txt", {"encoding": "utf-8"});
-*/
-
 bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
@@ -116,7 +110,6 @@ bot.on("message", function(message) {
 
     var args = message.content.substring(PREFIX.length).trim().split(" ");
     var choice = Math.floor(Math.random());
-    //members = message.guild.members.sort().array();
     members = Array.from(message.guild.members.values());
     switch(args[0].toLowerCase())
     {
@@ -345,37 +338,38 @@ bot.on("message", function(message) {
         case "roster":
             var toReturn = "", toAdd = "", tempString = "";
             var tempStorage;
-            if(args[1] == "members")
+            if(args[1] == "actives")
             {
-                var activeRole = message.guild.roles.find("name", "Member");
-                var actives = [];
+                var officerRole = message.guild.roles.find("name", "Active");
+                var officers = [];
                 for (var index = 0; index < members.length; index++)
                 {
-                    if (members[index].roles.has(activeRole.id))
+                    if (members[index].roles.has(officerRole.id))
                     {
-                        actives.push(members[index].nickname);
+                        officers.push(members[index].nickname);
                     }
                 }
-                actives.sort();
-                for (var index = 0; index < actives.length; index++)
+                officers.sort();
+                for (var index = 0; index < officers.length; index++)
                 {
-                    tempStorage = actives[index].split(" ");
+                    tempStorage = officers[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
                     for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
                         tempString += tempStorage[innerIndex] + " ";
                     }
-                    actives[index] = tempString;
+                    officers[index] = tempString;
                 }
-                actives.sort();
-                for (var index = 0; index < actives.length; index++)
+                officers.sort();
+                for (var index = 0; index < officers.length; index++)
                 {
-                    toAdd = actives[index];
+                    toAdd = officers[index];
                     toReturn += toAdd + "\n";
                 }
-                message.channel.send("Here's a list of all our actives in Honor Guard: \n");
+                message.channel.send("Here's a list of all our actives: \n");
                 message.channel.send(toReturn);
                 break;
+
             }
             else if (args[1] == "officers")
             {
