@@ -500,7 +500,9 @@ bot.on("message", function(message) {
                 countStringTwo += toReturn;
 
                 message.channel.send("Here's a list of everyone we have: ");
-                message.channel.send(countString + countStringTwo);
+                var totalForce = actives.length + trainees.length;
+                var totalString = `Total Force for Honor Guard: ${totalForce}`;
+                message.channel.send(countStringTwo + countString);
                 break;
             }
             else
