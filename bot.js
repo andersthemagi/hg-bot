@@ -133,20 +133,28 @@ bot.on("message", function(message) {
                 "color": 0x5D8AA8,
                 "fields": [
                     {
-                        "name": ">door [vulgar]",
-                        "value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open."
+                        "name": ">door <vulgar>",
+                        "value": "Sends a message to the channel that you would like the door to be open. If the command is given as '>door vulgar', the bot will verbally abuse the chat while asking for the door to be open.\n Example usage: **>door** OR **>door vulgar**"
                     },
                     {
-                        "name": ">fde [af/afpro/full/fullpro] [number of commands]",
-                        "value": "Auto Generates an FDE. 'af' and 'afpro' generate commands in AFMAN36-2203. 'full' and 'fullpro' generate commands with AF and the MCO P5060.20 Appendix A"
+                        "name": ">fde <af/afpro/full/fullpro> <number of commands>",
+                        "value": "Auto Generates an FDE. 'af' and 'afpro' generate commands in AFMAN36-2203. 'full' and 'fullpro' generate commands with AF and the MCO P5060.20 Appendix A\n. Example Usage: **>fde af 10**"
                     },
                     {
                         "name": ">help",
-                        "value": "Displays this list. List is sent through Direct Message to the user who requests it."
+                        "value": "Displays this list. List is sent through Direct Message to the user who requests it.\n Example usage: **>help**"
                     },
                     {
                         "name": ">report",
-                        "value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, not counting duplicates. After 30 seconds, the bot will tally up and send out how many people are here. It will also specify who said they were here."
+                        "value": "Sends a message for everyone to report accountability. Every person that says the word 'here' in the chat is counted, not counting duplicates. After 30 seconds, the bot will tally up and send out how many people are here. It will also specify who said they were here.\n Example usage: **>report**"
+                    },
+                    {
+                        "name": ">resources <topic>",
+                        "value": "Allows the user to get links to documentation and links pertinent to Honor Guard. Specify what you want by adding another word to this command from the following list: af, af-dnc, mc-dnc, facebook, fb, af-hg . \n Example usage: **>resources af-dnc**"
+                    },
+                    {
+                        "name": ">roster <role>",
+                        "value": "Sends a roster of people from a specific role. Add another word to this command (officers/actives/trainees/all) to specify which roster of people you want. Rosters are auto-managed as people are added to roles on discord. \n Example usage: **>roster all**"
                     }
                 ]
             };
