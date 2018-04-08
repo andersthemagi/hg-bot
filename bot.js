@@ -499,10 +499,10 @@ bot.on("message", function(message) {
                 var countStringTwo = `\n Total Actives: ${actives.length} \n`;
                 countStringTwo += toReturn;
 
-                message.channel.send("Here's a list of everyone we have: ");
+                message.channel.send("Here's a list of everyone we have: \n");
                 var totalForce = actives.length + trainees.length;
-                var totalString = `Total Force for Honor Guard: ${totalForce}`;
-                message.channel.send(countStringTwo + countString);
+                var totalString = `Total Force for Honor Guard: ${totalForce} \n`;
+                message.channel.send(totalString + countStringTwo + countString);
                 break;
             }
             else
