@@ -340,34 +340,35 @@ bot.on("message", function(message) {
             var tempStorage;
             if(args[1] == "actives")
             {
-                var officerRole = message.guild.roles.find("name", "Active");
-                var officers = [];
+                var activeRole = message.guild.roles.find("name", "Active");
+                var actives = [];
                 for (var index = 0; index < members.length; index++)
                 {
-                    if (members[index].roles.has(officerRole.id))
+                    if (members[index].roles.has(activeRole.id))
                     {
-                        officers.push(members[index].nickname);
+                        actives.push(members[index].nickname);
                     }
                 }
-                officers.sort();
-                for (var index = 0; index < officers.length; index++)
+                actives.sort();
+                for (var index = 0; index < actives.length; index++)
                 {
-                    tempStorage = officers[index].split(" ");
+                    tempStorage = actives[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
                     for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
                         tempString += tempStorage[innerIndex] + " ";
                     }
-                    officers[index] = tempString;
+                    actives[index] = tempString;
                 }
-                officers.sort();
-                for (var index = 0; index < officers.length; index++)
+                actives.sort();
+                for (var index = 0; index < actives.length; index++)
                 {
-                    toAdd = officers[index];
+                    toAdd = actives[index];
                     toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our actives: \n");
-                message.channel.send(toReturn);
+                var countString = `\n Total Actives: ${actives.length} \n`;
+                message.channel.send(countString + toReturn);
                 break;
 
             }
@@ -400,7 +401,7 @@ bot.on("message", function(message) {
                     toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our officers: \n");
-                message.channel.send(toReturn);
+                message.channel.send(countString + toReturn);
                 break;
             }
             else if(args[1] == "trainees")
@@ -428,11 +429,78 @@ bot.on("message", function(message) {
                 trainees.sort();
                 for (var index = 0; index < trainees.length; index++)
                 {
-                    toAdd = officers[index];
+                    toAdd = trainees[index];
                     toReturn += toAdd + "\n";
                 }
                 message.channel.send("Here's a list of all our trainees: \n");
-                message.channel.send(toReturn);
+                var countString = `\n Total Trainees: ${trainees.length} \n`;
+                message.channel.send(countString + toReturn);
+                break;
+            }
+            else if (args[1] == "all")
+            {
+                var traineeRole = message.guild.roles.find("name", "Trainee");
+                var trainees = [];
+                for (var index = 0; index < members.length; index++)
+                {
+                    if (members[index].roles.has(traineeRole.id))
+                    {
+                        trainees.push(members[index].nickname);
+                    }
+                }
+                trainees.sort();
+                for (var index = 0; index < trainees.length; index++)
+                {
+                    tempStorage = trainees[index].split(" ");
+                    tempString = tempStorage[tempStorage.length - 1] + ", ";
+                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    {
+                        tempString += tempStorage[innerIndex] + " ";
+                    }
+                    trainees[index] = tempString;
+                }
+                trainees.sort();
+                for (var index = 0; index < trainees.length; index++)
+                {
+                    toAdd = trainees[index];
+                    toReturn += toAdd + "\n";
+                }
+                var countString = `\n Total Trainees: ${trainees.length} \n`;
+                countString += toReturn;
+
+                // Prepping the active list.
+                var activeRole = message.guild.roles.find("name", "Active");
+                var actives = [];
+                for (var index = 0; index < members.length; index++)
+                {
+                    if (members[index].roles.has(activeRole.id))
+                    {
+                        actives.push(members[index].nickname);
+                    }
+                }
+                actives.sort();
+                for (var index = 0; index < actives.length; index++)
+                {
+                    tempStorage = actives[index].split(" ");
+                    tempString = tempStorage[tempStorage.length - 1] + ", ";
+                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    {
+                        tempString += tempStorage[innerIndex] + " ";
+                    }
+                    actives[index] = tempString;
+                }
+                actives.sort();
+                for (var index = 0; index < actives.length; index++)
+                {
+                    toAdd = actives[index];
+                    toReturn += toAdd + "\n";
+                }
+
+                var countStringTwo = `\n Total Actives: ${actives.length} \n`;
+                countStringTwo += toReturn;
+
+                message.channel.send("Here's a list of everyone we have: ");
+                message.channel.send(countString + countStringTwo);
                 break;
             }
             else
