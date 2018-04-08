@@ -99,12 +99,12 @@ bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
 
-    bot.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
+    bot.channels.get("412453444876500994").send(`$purge ${generalChanne.name}`)
     .then(msg => {
         msg.delete(10000);
     })
     .catch();
-    bot.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel}`)
+    bot.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel.name}`)
     .then(msg => {
         msg.delete(10000);
     })
@@ -112,12 +112,12 @@ bot.on("ready", function(message) {
 
     function purgeInterval()
     {
-        bot.channels.get("412453444876500994").send(`$purge ${generalChannel}`)
+        bot.channels.get("412453444876500994").send(`$purge ${generalChannel.name}`)
         .then(msg => {
             msg.delete(10000);
         })
         .catch();
-        bot.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel}`)
+        bot.channels.get("412453444876500994").send(`$purge ${practiceEventsChannel.name}`)
         .then(msg => {
             msg.delete(10000);
         })
