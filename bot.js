@@ -114,7 +114,7 @@ bot.on("message", function(message) {
 
     if (!message.content.startsWith(PREFIX)) {return;}
 
-    var args = message.content.substring(PREFIX.length).split(" ");
+    var args = message.content.substring(PREFIX.length).trim().split(/ /+g);
     var choice = Math.floor(Math.random());
     //members = message.guild.members.sort().array();
     members = Array.from(message.guild.members.values());
