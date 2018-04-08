@@ -92,8 +92,8 @@ var mcoCommands = [
 ];
 
 var members = "";
-var generalChannel = bot.channels.get("411700402279415812");
-var practiceEventsChannel = bot.channels.get("427504896468713485");
+var generalChannel = guild.channels.get("411700402279415812");
+var practiceEventsChannel = guild.channels.get("427504896468713485");
 
 bot.on("ready", function(message) {
     console.log(" ");
