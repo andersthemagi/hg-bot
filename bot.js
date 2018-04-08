@@ -345,9 +345,9 @@ bot.on("message", function(message) {
         case "roster":
             var toReturn = "", toAdd = "", tempString = "";
             var tempStorage;
-            if(args[1] == "actives")
+            if(args[1] == "members")
             {
-                var activeRole = message.guild.roles.find("name", "Active");
+                var activeRole = message.guild.roles.find("name", "Member");
                 var actives = [];
                 for (var index = 0; index < members.length; index++)
                 {
