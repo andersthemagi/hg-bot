@@ -366,7 +366,7 @@ bot.on("message", function(message) {
                 message.channel.send(`Here's what I have about ${topic}! \n` + toReturn);
             }
 
-            if (args.length < 2 || topic == "" || topic)
+            if (args.length < 2 || topic == "")
             {
                 message.channel.send("You didn't put any arguments in bud, what's going on?");
                 break;
