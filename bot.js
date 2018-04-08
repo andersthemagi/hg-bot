@@ -111,7 +111,7 @@ bot.on("ready", function(message) {
         .then(msg => {
             msg.delete(1000 * 10);
         });
-    }, 1000 * 60);
+    }, 1000 * 90);
 
 
     function purgeInterval()
@@ -125,7 +125,7 @@ bot.on("ready", function(message) {
             .then(msg => {
                 msg.delete(1000 * 10);
             });
-        }, 1000 * 60);
+        }, 1000 * 90);
     }
 
     //Runs the purge commands every hour once it's initialized.
