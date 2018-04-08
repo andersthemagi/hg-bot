@@ -405,7 +405,7 @@ bot.on("message", function(message) {
                     toAdd = actives[index];
                     toReturn += toAdd + "\n";
                 }
-                message.channel.send("Here's a list of all our actives: \n");
+                message.channel.send("Here's a list of all our actives in Honor Guard: \n");
                 message.channel.send(toReturn);
                 break;
             }
