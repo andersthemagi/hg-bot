@@ -1,7 +1,6 @@
 "use strict";
 
 var Discord = require("discord.js");
-var fs = require("fs");
 
 var bot = new Discord.Client();
 
@@ -98,7 +97,31 @@ bot.on("ready", function(message) {
     console.log(" ");
     bot.user.setGame("Counter March");
 
-    //Gets the rosters from the github repository for usage in the command.
+    bot.channels.get("412453444876500994").send("$purge #practice_and_obm")
+    .then(msg => {
+        msg.delete(1000);
+    })
+    .catch();
+    bot.channels.get("412453444876500994").send("$purge #general")
+    .then(msg => {
+        msg.delete(1000);
+    })
+    .catch();
+
+    function purgeInterval()
+    {
+        bot.channels.get("412453444876500994").send("$purge #practice_and_obm")
+        .then(msg => {
+            msg.delete(1000);
+        })
+        .catch();
+        bot.channels.get("412453444876500994").send("$purge #general")
+        .then(msg => {
+            msg.delete(1000);
+        })
+        .catch();
+    }
+    setInterval(purgeInterval, (1000 * 60 * 60));
 
     bot.channels.get("412443638560456714").send("I am alive! Doing outstanding so far!");
 });
