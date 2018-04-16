@@ -167,7 +167,7 @@ bot.on("message", function(message) {
 
     if (!message.content.startsWith(PREFIX)) {return;}
 
-    if(message.guild === null)
+    if(message.channel.type === "dm")
     {
         message.channel.send("Hey i can see this!");
     }
