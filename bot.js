@@ -169,7 +169,7 @@ bot.on("message", function(message) {
 
     if(message.channel.type === "dm")
     {
-        message.channel.send("Hey i can see this!");
+        message.author.send("Hey i can see this!");
     }
 
     var args = message.content.substring(PREFIX.length).trim().split(" ");
