@@ -1,3 +1,6 @@
+/* jshint esversion: 6 */
+/* global require, console, module, __dirname, setInterval, setTimeout, process */
+
 "use strict";
 
 var Discord = require("discord.js");
@@ -92,7 +95,9 @@ var mcoCommands = [
 ];
 
 var members = "";
+var toReturn = "";
 var gameSwitch = 0;
+var index = 0;
 /*
 var generalChannel = guild.channels.get("411700402279415812");
 var practiceEventsChannel = guild.channels.get("427504896468713485");
@@ -162,6 +167,11 @@ bot.on("message", function(message) {
 
     if (!message.content.startsWith(PREFIX)) {return;}
 
+    if(message.guild === null)
+    {
+        message.channel.send("Hey i can see this!");
+    }
+
     var args = message.content.substring(PREFIX.length).trim().split(" ");
     var choice = Math.floor(Math.random());
     members = Array.from(message.guild.members.values());
@@ -215,9 +225,6 @@ bot.on("message", function(message) {
             message.author.send({ embed });
             break;
 
-        /*
-        >fde [af/full] [# of commands]
-        */
         case "fde":
             var commands = 0;
             choice = 0;
@@ -308,10 +315,6 @@ bot.on("message", function(message) {
             message.channel.send(returnString);
             break;
 
-        /*
-        >report
-        - Gets accountability based off of who says they're here in the chat within 30 seconds of the report message being sent in the chat.
-        */
         case "report":
             var index = 0;
             let uidHolder = [];
@@ -381,7 +384,7 @@ bot.on("message", function(message) {
             }
             else if (topic == "mc-dnc")
             {
-                toReturn = "http://www.marines.mil/Portals/59/Publications/MCO%20P5060.20%20W%20CH%201.pdf"
+                toReturn = "http://www.marines.mil/Portals/59/Publications/MCO%20P5060.20%20W%20CH%201.pdf";
                 topic = "Marine Corps Orders P5060.20 Appendix A";
                 printResources();
                 break;
@@ -412,15 +415,18 @@ bot.on("message", function(message) {
             	message.channel.send(`Sorry! I can't find anything on ${topic}. Hopefully it'll be added to my library soon!`);
             	break;
             }
+            break;
 
         case "roster":
-            var toReturn = "", toAdd = "", tempString = "";
+            toReturn = "";
+            var toAdd = "", tempString = "";
             var tempStorage;
             if(args[1] == "actives")
             {
                 var activeRole = message.guild.roles.find("name", "Active");
                 var actives = [];
-                for (var index = 0; index < members.length; index++)
+                var innerIndex = 0;
+                for (index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(activeRole.id))
                     {
@@ -428,18 +434,18 @@ bot.on("message", function(message) {
                     }
                 }
                 actives.sort();
-                for (var index = 0; index < actives.length; index++)
+                for (index = 0; index < actives.length; index++)
                 {
                     tempStorage = actives[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
-                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    for (innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
                         tempString += tempStorage[innerIndex] + " ";
                     }
                     actives[index] = tempString;
                 }
                 actives.sort();
-                for (var index = 0; index < actives.length; index++)
+                for (index = 0; index < actives.length; index++)
                 {
                     toAdd = actives[index];
                     toReturn += toAdd + "\n";
@@ -454,7 +460,8 @@ bot.on("message", function(message) {
             {
                 var officerRole = message.guild.roles.find("name", "Officer");
                 var officers = [];
-                for (var index = 0; index < members.length; index++)
+                var innerIndex = 0;
+                for (index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(officerRole.id))
                     {
@@ -462,11 +469,11 @@ bot.on("message", function(message) {
                     }
                 }
                 officers.sort();
-                for (var index = 0; index < officers.length; index++)
+                for (index = 0; index < officers.length; index++)
                 {
                     tempStorage = officers[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
-                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    for (innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
                         tempString += tempStorage[innerIndex] + " ";
                     }
@@ -486,7 +493,8 @@ bot.on("message", function(message) {
             {
                 var traineeRole = message.guild.roles.find("name", "Trainee");
                 var trainees = [];
-                for (var index = 0; index < members.length; index++)
+                var innerIndex = 0;
+                for (index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(traineeRole.id))
                     {
@@ -494,11 +502,11 @@ bot.on("message", function(message) {
                     }
                 }
                 trainees.sort();
-                for (var index = 0; index < trainees.length; index++)
+                for (index = 0; index < trainees.length; index++)
                 {
                     tempStorage = trainees[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
-                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    for (innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
                         tempString += tempStorage[innerIndex] + " ";
                     }
@@ -527,11 +535,11 @@ bot.on("message", function(message) {
                     }
                 }
                 trainees.sort();
-                for (var index = 0; index < trainees.length; index++)
+                for (index = 0; index < trainees.length; index++)
                 {
                     tempStorage = trainees[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
-                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    for (innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
                         tempString += tempStorage[innerIndex] + " ";
                     }
@@ -557,11 +565,11 @@ bot.on("message", function(message) {
                     }
                 }
                 actives.sort();
-                for (var index = 0; index < actives.length; index++)
+                for (index = 0; index < actives.length; index++)
                 {
                     tempStorage = actives[index].split(" ");
                     tempString = tempStorage[tempStorage.length - 1] + ", ";
-                    for (var innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
+                    for (innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
                     {
                         tempString += tempStorage[innerIndex] + " ";
                     }
@@ -593,6 +601,7 @@ bot.on("message", function(message) {
                 message.channel.send("I don't have any rosters about that. Try again with some of these words: officers, actives, trainees");
                 break;
             }
+            break;
 
         default:
             message.channel.send("I don't understand what to do with that command. Please use >help to get a list of possible commands to give me!");
