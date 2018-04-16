@@ -163,14 +163,14 @@ bot.on("ready", function(message) {
 });
 
 bot.on("message", function(message) {
-    if (message.author.equals(bot.user)) {return;}
-
-    if (!message.content.startsWith(PREFIX)) {return;}
-
     if(message.channel.type === "dm")
     {
         message.author.send("Hey i can see this!");
     }
+
+    if (message.author.equals(bot.user)) {return;}
+
+    if (!message.content.startsWith(PREFIX)) {return;}
 
     var args = message.content.substring(PREFIX.length).trim().split(" ");
     var choice = Math.floor(Math.random());
