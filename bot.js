@@ -164,17 +164,17 @@ bot.on("ready", function(message) {
 
 bot.on("message", function(message) {
 
-    if(message.channel.type === "dm" || message.channel.type === "group")
+    if((message.channel.type === "dm" || message.channel.type === "group") && message.content.includes("feedback"))
     {
         message.author.send("Would you like to give feedback? (Yes/No)");
         const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {time: 10000});
         console.log(collector);
-        collector.on('collect', message => {
-            if (message.content.includes('yes') || message.content.includes('Yes'))
+        collector.on('collect', newMessage => {
+            if (newMessage.content.includes('yes') || newMessage.content.includes('Yes'))
             {
                 message.author.send("YOU SAID YES BITCH");
             }
-            else if (message.content.includes('no') || message.content.includes('No'))
+            else if (newMessage.content.includes('no') || newMessage.content.includes('No'))
             {
                 message.author.send("YOU SAID NO BITCH");
             }
