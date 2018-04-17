@@ -167,7 +167,7 @@ bot.on("message", function(message) {
     if((message.channel.type === "dm" || message.channel.type === "group") && message.content.includes("feedback"))
     {
         message.author.send("Would you like to give feedback? (Yes/No)");
-        const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {time: 10000});
+        const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {max: 1, time: 10000});
         console.log(collector);
         collector.on('collect', newMessage => {
             if (newMessage.content.includes('yes') || newMessage.content.includes('Yes'))
