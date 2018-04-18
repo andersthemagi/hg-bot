@@ -166,8 +166,36 @@ bot.on("message", function(message) {
 
     if((message.channel.type === "dm") && message.content.includes("feedback"))
     {
-        
-
+        var nameString = "none.";
+        const filter = m => m.author.id === message.author.id;
+        message.channel.send("What's your name? You can always just say **ANONYMOUS** or something if you don't want to say your name: ")
+        .then(() => {
+            message.channel.awaitMessages(filter, {maxMatches: 1, time: 30000, errors: ['time']})
+            .then(collected => {
+                nameString = collected.content.first().toString();
+                var responseString = "Null";
+                message.channel.send("Please tell me your feedback. You have 5 minutes to type out whatever you need. If you can't type too fast, I highly recommend writing out what you want to say, then pasting it into the chat.")
+                .then(() => {
+                    message.channel.awaitMessages(filter, {maxMatches: 1, time: 1000 * 60 * 5, errors: ['time']})
+                    .then(collected => {
+                        responseString = collected.content.first().toString();
+                    })
+                    .catch(collected => {
+                        message.channel.send("Sorry! You didn't seem to type anything. Please try again later.");
+                    });
+                });
+                nameString += "\n\n" + responseString;
+                message.channel.send("Wonderful! I'll send this over to the current protocol officer and they'll take care of it. Thank you so much! :smile::heart::heart:")
+                .then(() => {
+                    var PO = bot.users.get("330097876451459073");
+                    PO.send(nameString);
+                });
+            })
+            .catch(collected => {
+                message.channel.send("Sorry! You didn't seem to type anything. Please try again later.");
+                return;
+            });
+        });
     }
 
     if (message.author.equals(bot.user)) {return;}
