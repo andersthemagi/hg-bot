@@ -164,7 +164,7 @@ bot.on("ready", function(message) {
 
 bot.on("message", function(message) {
 
-    if((message.channel.type === "dm" || message.channel.type === "group") && message.content.includes("feedback"))
+    if((message.channel.type === "dm") && message.content.includes("feedback"))
     {
         var feedbackGate = false;
         message.author.send("Would you like to give feedback? (Yes/No)");
@@ -213,11 +213,14 @@ bot.on("message", function(message) {
         });
         }
         */
+        /*
+        {
         const initialFilter = m => m.content.includes('yes');
         message.channel.awaitMessages(res => {
             if (!res.author.bot)
             {
-                if (res.content.includes('yes'))
+                var resp = res.content.toLowerCase();
+                if (resp.includes('yes'))
                 {
                     feedbackGate = true;
                 }
@@ -235,7 +238,25 @@ bot.on("message", function(message) {
         {
             message.channel.send("IT'S ALIVE");
         }
+        }
+        */
+        const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {max:1, time:30000});
+        console.log(collector);
+        collector.on('collect', newMessage => {
+            if (newMessage.content.toLowerCase().includes('yes'))
+            {
+                feedbackGate = true;
+            }
+            else if (!newMessage.content.toLowerCase().includes('yes'))
+            {
+                message.channel.send("Thanks for stopping by then! Enjoy the rest of your day :smile: :heart: ");
+            }
+        });
 
+        if (feedbackGate)
+        {
+            message.channel.send("Hello there!");
+        }
     }
 
     if (message.author.equals(bot.user)) {return;}
