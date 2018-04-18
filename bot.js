@@ -166,6 +166,7 @@ bot.on("message", function(message) {
 
     if((message.channel.type === "dm" || message.channel.type === "group") && message.content.includes("feedback"))
     {
+        var feedbackGate = false;
         message.author.send("Would you like to give feedback? (Yes/No)");
         /*
         {
@@ -213,12 +214,28 @@ bot.on("message", function(message) {
         }
         */
         const initialFilter = m => m.content.includes('yes');
-        message.channel.awaitMessages(initialFilter, { max: 1, time: 30000, errors: ['time']})
-        .then(collected => {
-            message.channel.send(collected.content.toString());
-        }) .catch(collected => {
-            message.channel.send("Oops! Looks like you took too long to respond, please try again later. ");
+        message.channel.awaitMessages(res => {
+            if (!res.author.bot)
+            {
+                if (res.content.includes('yes'))
+                {
+                    feedbackGate = true;
+                }
+                else
+                {
+                    message.channel.send("Then enjoy the rest of your day!");
+                }
+            }
+        }, { max: 1, time: 30000, errors: ['time']})
+        .catch(() => {
+            message.channel.send("Timeout! Try again in a little bit.");
         });
+
+        if (feedbackGate)
+        {
+            message.channel.send("IT'S ALIVE");
+        }
+
     }
 
     if (message.author.equals(bot.user)) {return;}
