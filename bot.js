@@ -184,8 +184,8 @@ bot.on("message", function(message) {
 
         });
 
-        //if (feedbackGate === true)
-        //{
+        if (feedbackGate === true)
+        {
             message.channel.send("Would you like to stay anonymous?");
             collector.next.then(anonMessage => {
                 if (anonMessage.content.toLowerCase().includes('yes'))
@@ -201,7 +201,7 @@ bot.on("message", function(message) {
                 message.channel.send("Sorry! Time ran out!");
             });
             feedbackGate = false;
-        //}
+        }
         if (nameGetGate)
         {
             message.channel.send("Wow this is fun!");
