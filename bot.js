@@ -176,7 +176,7 @@ bot.on("message", function(message) {
                 var responseString = "Null";
                 message.channel.send("Please tell me your feedback. You have 5 minutes to type out whatever you need. If you can't type too fast, I highly recommend writing out what you want to say, then pasting it into the chat.")
                 .then(() => {
-                    message.channel.awaitMessages(filter, {maxMatches: 1, time: 1000 * 60 * 5, errors: ['time']})
+                    message.channel.awaitMessages(filter, {maxMatches: 1, time: 300000, errors: ['time']})
                     .then(collected => {
                         responseString = collected.content.first().toString();
                     })
