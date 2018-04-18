@@ -167,6 +167,8 @@ bot.on("message", function(message) {
     if((message.channel.type === "dm" || message.channel.type === "group") && message.content.includes("feedback"))
     {
         message.author.send("Would you like to give feedback? (Yes/No)");
+        /*
+        {
         const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {max: 1, time: 30000});
         console.log(collector);
         collector.on('collect', newMessage => {
@@ -201,12 +203,21 @@ bot.on("message", function(message) {
                 });
                 message.channel.send("Wonderful! Thanks for your feedback! Your message will be sent to the Protocol Officer for review. Have a wonderful day! :smile: :heart: ");
                 nameString += responseString;
-                
+
             }
             else if (newMessage.content.includes('no') || newMessage.content.includes('No'))
             {
                 message.author.send("Then have a great rest of your day! Here's a cat picture to make you feel wonderful! :smile: :heart:");
             }
+        });
+        }
+        */
+        const initialFilter = m => m.content.includes('yes');
+        message.channel.awaitMessages(initialFilter, { max: 1, time: 30000, errors: ['time']})
+        .then(collected => {
+            message.channel.send(collected.content.toString());
+        }) .catch(collected => {
+            message.channel.send("Oops! Looks like you took too long to respond, please try again later. ");
         });
     }
 
