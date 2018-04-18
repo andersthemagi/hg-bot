@@ -198,9 +198,9 @@ bot.on("message", function(message) {
                     console.log(responseCollect);
                     responseCollect.on('collect', responseMessage => {
                         responseString = responseMessage.toString();
+                        message.channel.send("Wonderful! Thanks for your feedback! Your message will be sent to the Protocol Officer for review. Have a wonderful day! :smile: :heart: ");
+                        nameString += responseString;
                     });
-                    message.channel.send("Wonderful! Thanks for your feedback! Your message will be sent to the Protocol Officer for review. Have a wonderful day! :smile: :heart: ");
-                    nameString += responseString;
                 });
 
 
