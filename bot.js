@@ -172,13 +172,13 @@ bot.on("message", function(message) {
         .then(() => {
             message.channel.awaitMessages(filter, {maxMatches: 1, time: 30000, errors: ['time']})
             .then(collected => {
-                nameString = collected.content.first().toString();
+                nameString = collected.first().content.toString();
                 var responseString = "Null";
                 message.channel.send("Please tell me your feedback. You have 5 minutes to type out whatever you need. If you can't type too fast, I highly recommend writing out what you want to say, then pasting it into the chat.")
                 .then(() => {
                     message.channel.awaitMessages(filter, {maxMatches: 1, time: 300000, errors: ['time']})
                     .then(collected => {
-                        responseString = collected.content.first().toString();
+                        responseString = collected.first().content.toString();
                     })
                     .catch(collected => {
                         message.channel.send("Sorry! You didn't seem to type anything. Please try again later.");
