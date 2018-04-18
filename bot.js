@@ -181,14 +181,11 @@ bot.on("message", function(message) {
             {
                 message.channel.send("Then have a wonderful rest of your day!");
             }
-            else if (!fbMessage.content.toLowerCase().includes('yes') || !fbMessage.content.toLowerCase().includes('no'))
-            {
-                message.channel.send("That's not an acceptable answer. Please try again.");
-                return;
-            }
+
         });
-        if (feedbackGate === true)
-        {
+
+        //if (feedbackGate === true)
+        //{
             message.channel.send("Would you like to stay anonymous?");
             collector.next.then(anonMessage => {
                 if (anonMessage.content.toLowerCase().includes('yes'))
@@ -204,8 +201,8 @@ bot.on("message", function(message) {
                 message.channel.send("Sorry! Time ran out!");
             });
             feedbackGate = false;
-        }
-        else if (nameGetGate)
+        //}
+        if (nameGetGate)
         {
             message.channel.send("Wow this is fun!");
         }
