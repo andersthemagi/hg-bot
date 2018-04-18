@@ -168,8 +168,6 @@ bot.on("message", function(message) {
     {
         var feedbackGate = false;
         message.author.send("Would you like to give feedback? (Yes/No)");
-        /*
-        {
         const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {max: 1, time: 30000});
         console.log(collector);
         collector.on('collect', newMessage => {
@@ -193,17 +191,18 @@ bot.on("message", function(message) {
                             nameString = nameMessage.toString();
                         });
                     }
+                    nameString += "\n\n";
+                    var responseString = "None.";
+                    message.channel.send("What would you like to give as feedback? You have 5 minutes to write whatever you need. (I highly recommend writing what you need to say before hand and pasting it into the chat with me) :");
+                    const responseCollect = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {max: 1, time: 1000 * 60 * 5});
+                    console.log(responseCollect);
+                    responseCollect.on('collect', responseMessage => {
+                        responseString = responseMessage.toString();
+                    });
+                    message.channel.send("Wonderful! Thanks for your feedback! Your message will be sent to the Protocol Officer for review. Have a wonderful day! :smile: :heart: ");
+                    nameString += responseString;
                 });
-                nameString += "\n\n";
-                var responseString = "None.";
-                message.channel.send("What would you like to give as feedback? You have 5 minutes to write whatever you need. (I highly recommend writing what you need to say before hand and pasting it into the chat with me) :");
-                const responseCollect = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {max: 1, time: 1000 * 60 * 5});
-                console.log(responseCollect);
-                responseCollect.on('collect', responseMessage => {
-                    responseString = responseMessage.toString();
-                });
-                message.channel.send("Wonderful! Thanks for your feedback! Your message will be sent to the Protocol Officer for review. Have a wonderful day! :smile: :heart: ");
-                nameString += responseString;
+
 
             }
             else if (newMessage.content.includes('no') || newMessage.content.includes('No'))
@@ -211,52 +210,6 @@ bot.on("message", function(message) {
                 message.author.send("Then have a great rest of your day! Here's a cat picture to make you feel wonderful! :smile: :heart:");
             }
         });
-        }
-        */
-        /*
-        {
-        const initialFilter = m => m.content.includes('yes');
-        message.channel.awaitMessages(res => {
-            if (!res.author.bot)
-            {
-                var resp = res.content.toLowerCase();
-                if (resp.includes('yes'))
-                {
-                    feedbackGate = true;
-                }
-                else
-                {
-                    message.channel.send("Then enjoy the rest of your day!");
-                }
-            }
-        }, { max: 1, time: 30000, errors: ['time']})
-        .catch(() => {
-            message.channel.send("Timeout! Try again in a little bit.");
-        });
-
-        if (feedbackGate)
-        {
-            message.channel.send("IT'S ALIVE");
-        }
-        }
-        */
-        const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, {max:1, time:30000});
-        console.log(collector);
-        collector.on('collect', newMessage => {
-            if (newMessage.content.toLowerCase().includes('yes'))
-            {
-                feedbackGate = true;
-            }
-            else if (!newMessage.content.toLowerCase().includes('yes'))
-            {
-                message.channel.send("Thanks for stopping by then! Enjoy the rest of your day :smile: :heart: ");
-            }
-        });
-
-        if (feedbackGate)
-        {
-            message.channel.send("Hello there!");
-        }
     }
 
     if (message.author.equals(bot.user)) {return;}
