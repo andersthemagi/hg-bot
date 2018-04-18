@@ -181,9 +181,10 @@ bot.on("message", function(message) {
             {
                 message.channel.send("Then have a wonderful rest of your day!");
             }
-            else if (!fbMessage.content.toLowerCase().includes('yes') && !fbMessage.content.toLowerCase().includes('no'))
+            else if (!fbMessage.content.toLowerCase().includes('yes') || !fbMessage.content.toLowerCase().includes('no'))
             {
                 message.channel.send("That's not an acceptable answer. Please try again.");
+                return;
             }
         });
         if (feedbackGate === true)
