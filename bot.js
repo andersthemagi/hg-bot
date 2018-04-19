@@ -164,6 +164,7 @@ bot.on("ready", function(message) {
 
 bot.on("message", function(message) {
 
+    /*
     if((message.channel.type === "dm") && message.content.includes("feedback"))
     {
         var nameString = "none.";
@@ -198,6 +199,7 @@ bot.on("message", function(message) {
             });
         });
     }
+    */
 
     if (message.author.equals(bot.user)) {return;}
 
