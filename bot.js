@@ -179,17 +179,18 @@ bot.on("message", function(message) {
                     message.channel.awaitMessages(filter, {maxMatches: 1, time: 300000, errors: ['time']})
                     .then(collected => {
                         responseString = collected.first().content.toString();
+                        nameString += "\n\n" + responseString;
+                        message.channel.send("Wonderful! I'll send this over to the current protocol officer and they'll take care of it. Thank you so much! :smile::heart::heart:")
+                        .then(() => {
+                            var PO = bot.users.get("330097876451459073");
+                            PO.send(nameString);
+                        });
                     })
                     .catch(collected => {
                         message.channel.send("Sorry! You didn't seem to type anything. Please try again later.");
                     });
                 });
-                nameString += "\n\n" + responseString;
-                message.channel.send("Wonderful! I'll send this over to the current protocol officer and they'll take care of it. Thank you so much! :smile::heart::heart:")
-                .then(() => {
-                    var PO = bot.users.get("330097876451459073");
-                    PO.send(nameString);
-                });
+
             })
             .catch(collected => {
                 message.channel.send("Sorry! You didn't seem to type anything. Please try again later.");
