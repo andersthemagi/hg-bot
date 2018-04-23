@@ -10,98 +10,104 @@ var bot = new Discord.Client();
 const PREFIX = ">";
 
 var vulgarResponses = [
-    "Holy fuck open the fucking door? @everyone",
-    "HEY FUCKHEAD. DOOR. NOW. @everyone",
-    "Can someone open the fucking door? @everyone",
-    "COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone",
-    "I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone",
-    "Fuck. Shit. Ass. Shit. Fuck. Door. @everyone"
+                    "Holy fuck open the fucking door? @everyone",
+                    "HEY FUCKHEAD. DOOR. NOW. @everyone",
+                    "Can someone open the fucking door? @everyone",
+                    "COME HERE SHITBAG. SOMEONE NEEDS A DOOR OPENING @everyone",
+                    "I CHIMED IN WITH A 'HAVEN'T YOU PEOPLE EVER HEARD OF, OPEN THE GODDAMN DOOR, NO?' @everyone",
+                    "Fuck. Shit. Ass. Shit. Fuck. Door. @everyone"
 ];
 
 var afmanCommands = [
-    "Column Left March",
-    "Present Arms",
-    "Forward March",
-    "Order Arms",
-    "Eyes Right",
-    "Ready Front",
-    "Column Right March",
-    "Parade Rest",
-    "Flight, Attention",
-    "Left Flank March",
-    "Right Flank March",
-    "To The Rear March",
-    "Column Half Left March",
-    "Column Half Right March",
-    "Left Step, March",
-    "Right Step, March",
-    "Left Face",
-    "Right Face",
-    "About Face",
-    "Dress Right, Dress",
-    "Cover",
-    "Ready Front"
+                    "Column Left March",
+                    "Present Arms",
+                    "Forward March",
+                    "Order Arms",
+                    "Eyes Right",
+                    "Ready Front",
+                    "Column Right March",
+                    "Parade Rest",
+                    "Flight, Attention",
+                    "Left Flank March",
+                    "Right Flank March",
+                    "To The Rear March",
+                    "Column Half Left March",
+                    "Column Half Right March",
+                    "Left Step, March",
+                    "Right Step, March",
+                    "Left Face",
+                    "Right Face",
+                    "About Face",
+                    "Dress Right, Dress",
+                    "Cover",
+                    "Ready Front"
 ];
 
 var afmanProCommands = [
-    "Column Left March",
-    "Present Arms",
-    "Forward March",
-    "Order Arms",
-    "Eyes Right",
-    "Ready Front",
-    "Column Right March",
-    "Parade Rest",
-    "Flight, Attention",
-    "Left Flank March",
-    "Right Flank March",
-    "To The Rear March",
-    "Column Half Left March",
-    "Column Half Right March",
-    "Incline 90 degrees, to the Right",
-    "Incline 90 degrees, to the Left",
-    "Incline 45 degrees, to the Left",
-    "Incline 45 degrees, to the Right",
-    "Incline 180 degrees, to the Left",
-    "Open Ranks, March",
-    "Close Ranks, March",
-    "Left Step, March",
-    "Right Step, March",
-    "Close, March",
-    "Extend, March",
-    "Route Step, March",
-    "Dress Right, Dress",
-    "Cover",
-    "Column of Files, from the Right",
-    "Column of Files, from the Left",
-    "Column of Threes",
-    "Ready Front",
-    "Dress Left, Dress",
-    "Eyes, Left",
-    "At Ease, March",
-    "Left Face",
-    "Right Face",
-    "About Face"
+                    "Column Left March",
+                    "Present Arms",
+                    "Forward March",
+                    "Order Arms",
+                    "Eyes Right",
+                    "Ready Front",
+                    "Column Right March",
+                    "Parade Rest",
+                    "Flight, Attention",
+                    "Left Flank March",
+                    "Right Flank March",
+                    "To The Rear March",
+                    "Column Half Left March",
+                    "Column Half Right March",
+                    "Incline 90 degrees, to the Right",
+                    "Incline 90 degrees, to the Left",
+                    "Incline 45 degrees, to the Left",
+                    "Incline 45 degrees, to the Right",
+                    "Incline 180 degrees, to the Left",
+                    "Open Ranks, March",
+                    "Close Ranks, March",
+                    "Left Step, March",
+                    "Right Step, March",
+                    "Close, March",
+                    "Extend, March",
+                    "Route Step, March",
+                    "Dress Right, Dress",
+                    "Cover",
+                    "Column of Files, from the Right",
+                    "Column of Files, from the Left",
+                    "Column of Threes",
+                    "Ready Front",
+                    "Dress Left, Dress",
+                    "Eyes, Left",
+                    "At Ease, March",
+                    "Left Face",
+                    "Right Face",
+                    "About Face"
 ];
 
 var mcoCommands = [
-    "Right Shoulder Arms",
-    "Trail Arms",
-    "Port Arms",
-    "Left Shoulder Arms",
-    "Order Arms",
-    "15 Count Manual of Arms",
-    "Inspection Arms"
+                    "Right Shoulder Arms",
+                    "Trail Arms",
+                    "Port Arms",
+                    "Left Shoulder Arms",
+                    "Order Arms",
+                    "15 Count Manual of Arms",
+                    "Inspection Arms"
 ];
+
+var officerRoster = "Victoria Jackson   - President \n" +
+                    "Andres Sepulveda   - Vice President \n" +
+                    "Mikeila McCarthy   - Protocol Officer \n" +
+                    "Jennifer Hernandez - Secretary \n" +
+                    "Lucas Sottile      - Maintenance Officer \n" +
+                    "Adam Winters       - Training Commander \n" +
+                    "Brett Inman        - Activities Officer \n" +
+                    "Steven Bloomfield  - Financial Officer \n";
 
 var members = "";
 var toReturn = "";
 var gameSwitch = 0;
 var index = 0;
-/*
-var generalChannel = guild.channels.get("411700402279415812");
-var practiceEventsChannel = guild.channels.get("427504896468713485");
-*/
+var innerIndex = 0;
 
 bot.on("ready", function(message) {
     console.log(" ");
@@ -163,43 +169,6 @@ bot.on("ready", function(message) {
 });
 
 bot.on("message", function(message) {
-
-    /*
-    if((message.channel.type === "dm") && message.content.includes("feedback"))
-    {
-        var nameString = "none.";
-        const filter = m => m.author.id === message.author.id;
-        message.channel.send("What's your name? You can always just say **ANONYMOUS** or something if you don't want to say your name: ")
-        .then(() => {
-            message.channel.awaitMessages(filter, {maxMatches: 1, time: 30000, errors: ['time']})
-            .then(collected => {
-                nameString = collected.first().content.toString();
-                var responseString = "Null";
-                message.channel.send("Please tell me your feedback. You have 5 minutes to type out whatever you need. If you can't type too fast, I highly recommend writing out what you want to say, then pasting it into the chat.")
-                .then(() => {
-                    message.channel.awaitMessages(filter, {maxMatches: 1, time: 300000, errors: ['time']})
-                    .then(collected => {
-                        responseString = collected.first().content.toString();
-                        nameString += "\n\n" + responseString;
-                        message.channel.send("Wonderful! I'll send this over to the current protocol officer and they'll take care of it. Thank you so much! :smile::heart::heart:")
-                        .then(() => {
-                            var PO = bot.users.get("330097876451459073");
-                            PO.send(nameString);
-                        });
-                    })
-                    .catch(collected => {
-                        message.channel.send("Sorry! You didn't seem to type anything. Please try again later.");
-                    });
-                });
-
-            })
-            .catch(collected => {
-                message.channel.send("Sorry! You didn't seem to type anything. Please try again later.");
-                return;
-            });
-        });
-    }
-    */
 
     if (message.author.equals(bot.user)) {return;}
 
@@ -458,7 +427,7 @@ bot.on("message", function(message) {
             {
                 var activeRole = message.guild.roles.find("name", "Active");
                 var actives = [];
-                var innerIndex = 0;
+                innerIndex = 0;
                 for (index = 0; index < members.length; index++)
                 {
                     if (members[index].roles.has(activeRole.id))
@@ -491,35 +460,8 @@ bot.on("message", function(message) {
             }
             else if (args[1] == "officers")
             {
-                var officerRole = message.guild.roles.find("name", "Officer");
-                var officers = [];
-                var innerIndex = 0;
-                for (index = 0; index < members.length; index++)
-                {
-                    if (members[index].roles.has(officerRole.id))
-                    {
-                        officers.push(members[index].nickname);
-                    }
-                }
-                officers.sort();
-                for (index = 0; index < officers.length; index++)
-                {
-                    tempStorage = officers[index].split(" ");
-                    tempString = tempStorage[tempStorage.length - 1] + ", ";
-                    for (innerIndex = 0; innerIndex < tempStorage.length - 1; innerIndex++)
-                    {
-                        tempString += tempStorage[innerIndex] + " ";
-                    }
-                    officers[index] = tempString;
-                }
-                officers.sort();
-                for (var index = 0; index < officers.length; index++)
-                {
-                    toAdd = officers[index];
-                    toReturn += toAdd + "\n";
-                }
-                message.channel.send("Here's a list of all our officers: \n");
-                message.channel.send(toReturn);
+                message.channel.send("Here's a list of our officers and their positions!");
+                message.channel.send(officerRoster);
                 break;
             }
             else if(args[1] == "trainees")
