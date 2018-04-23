@@ -468,35 +468,35 @@ bot.on("message", function(message) {
                     "fields" : [
                         {
                             "name" : "President - Victoria Jackson",
-                            "value" : "Granfathered Alumni"
+                            "value" : "Grandfathered Alumni"
                         },
                         {
                             "name": "Vice President - Andres Sepulveda",
-                            "value" : "AFROTC"
+                            "value" : "AS200, AFROTC"
                         },
                         {
                             "name" : "Protocol Officer - Mikeila McCarthy",
-                            "value" : "AFROTC"
+                            "value" : "AS100, AFROTC"
                         },
                         {
                             "name" : "Secretary - Jennifer Hernandez",
-                            "value" : "AFROTC"
+                            "value" : "AS100, AFROTC"
                         },
                         {
                             "name" : "Maintenance Officer - Lucas Sottile",
-                            "value" : "AFROTC"
+                            "value" : "AS100, AFROTC"
                         },
                         {
                             "name" : "Training Officer - Adam Winters",
-                            "value" : "AFROTC"
+                            "value" : "AS100, AFROTC"
                         },
                         {
                             "name" : "Activities Officer - Brett Inman",
-                            "value" : "AFROTC"
+                            "value" : "AS200, AFROTC"
                         },
                         {
                             "name" : "Financial Officer - Steven Bloomfield",
-                            "value" : "AFROTC"
+                            "value" : "AS300, AFROTC"
                         }
                     ]
                 };
