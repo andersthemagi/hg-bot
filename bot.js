@@ -103,46 +103,6 @@ var officerRoster = "Victoria Jackson          - President \n" +
                     "Brett Inman                  - Activities Officer \n" +
                     "Steven Bloomfield      - Financial Officer \n";
 
-var officerEmbed = {
-    "title" : "Officers of the Honor Guard",
-    "description" : "Here's a list of all our officers!",
-    "color" : 0x58DAA8,
-    "fields" : [
-        {
-            "name" : "President",
-            "value" : "Victoria Jackson"
-        },
-        {
-            "name": "Vice President",
-            "value" : "Andres Sepulveda"
-        },
-        {
-            "name" : "Protocol Officer",
-            "value" : "Mikeila McCarthy"
-        },
-        {
-            "name" : "Secretary",
-            "value" : "Jennifer Hernandez"
-        },
-        {
-            "name" : "Maintenance Officer",
-            "value" : "Lucas Sottile"
-        },
-        {
-            "name" : "Training Officer",
-            "value" : "Adam Winters"
-        },
-        {
-            "name" : "Activities Officer",
-            "value" : "Brett Inman"
-        },
-        {
-            "name" : "Financial Officer",
-            "value" : "Steven Bloomfield"
-        }
-    ]
-};
-
 var members = "";
 var toReturn = "";
 var gameSwitch = 0;
@@ -501,7 +461,46 @@ bot.on("message", function(message) {
             else if (args[1] == "officers")
             {
                 message.channel.send("Here's a list of our officers and their positions!");
-                message.channel.send({ officerEmbed });
+                var embed = {
+                    "title" : "Officers of the Honor Guard",
+                    "description" : "Here's a list of all our officers!",
+                    "color" : 0x58DAA8,
+                    "fields" : [
+                        {
+                            "name" : "President",
+                            "value" : "Victoria Jackson"
+                        },
+                        {
+                            "name": "Vice President",
+                            "value" : "Andres Sepulveda"
+                        },
+                        {
+                            "name" : "Protocol Officer",
+                            "value" : "Mikeila McCarthy"
+                        },
+                        {
+                            "name" : "Secretary",
+                            "value" : "Jennifer Hernandez"
+                        },
+                        {
+                            "name" : "Maintenance Officer",
+                            "value" : "Lucas Sottile"
+                        },
+                        {
+                            "name" : "Training Officer",
+                            "value" : "Adam Winters"
+                        },
+                        {
+                            "name" : "Activities Officer",
+                            "value" : "Brett Inman"
+                        },
+                        {
+                            "name" : "Financial Officer",
+                            "value" : "Steven Bloomfield"
+                        }
+                    ]
+                };
+                message.channel.send({ embed });
                 break;
             }
             else if(args[1] == "trainees")
