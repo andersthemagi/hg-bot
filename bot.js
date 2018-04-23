@@ -467,36 +467,36 @@ bot.on("message", function(message) {
                     "color" : 0x58DAA8,
                     "fields" : [
                         {
-                            "name" : "President",
-                            "value" : "Victoria Jackson"
+                            "name" : "President - Victoria Jackson",
+                            "value" : "Granfathered Alumni"
                         },
                         {
-                            "name": "Vice President",
-                            "value" : "Andres Sepulveda"
+                            "name": "Vice President - Andres Sepulveda",
+                            "value" : "AFROTC"
                         },
                         {
-                            "name" : "Protocol Officer",
-                            "value" : "Mikeila McCarthy"
+                            "name" : "Protocol Officer - Mikeila McCarthy",
+                            "value" : "AFROTC"
                         },
                         {
-                            "name" : "Secretary",
-                            "value" : "Jennifer Hernandez"
+                            "name" : "Secretary - Jennifer Hernandez",
+                            "value" : "AFROTC"
                         },
                         {
-                            "name" : "Maintenance Officer",
-                            "value" : "Lucas Sottile"
+                            "name" : "Maintenance Officer - Lucas Sottile",
+                            "value" : "AFROTC"
                         },
                         {
-                            "name" : "Training Officer",
-                            "value" : "Adam Winters"
+                            "name" : "Training Officer - Adam Winters",
+                            "value" : "AFROTC"
                         },
                         {
-                            "name" : "Activities Officer",
-                            "value" : "Brett Inman"
+                            "name" : "Activities Officer - Brett Inman",
+                            "value" : "AFROTC"
                         },
                         {
-                            "name" : "Financial Officer",
-                            "value" : "Steven Bloomfield"
+                            "name" : "Financial Officer - Steven Bloomfield",
+                            "value" : "AFROTC"
                         }
                     ]
                 };
