@@ -467,36 +467,36 @@ bot.on("message", function(message) {
                     "color" : 0x58DAA8,
                     "fields" : [
                         {
-                            "name" : "President",
-                            "value" : "Victoria Jackson"
+                            "name" : "President - Victoria Jackson",
+                            "value" : ""
                         },
                         {
-                            "name": "Vice President",
-                            "value" : "Andres Sepulveda"
+                            "name": "Vice President - Andres Sepulveda",
+                            "value" : ""
                         },
                         {
-                            "name" : "Protocol Officer",
-                            "value" : "Mikeila McCarthy"
+                            "name" : "Protocol Officer - Mikeila McCarthy",
+                            "value" : ""
                         },
                         {
-                            "name" : "Secretary",
-                            "value" : "Jennifer Hernandez"
+                            "name" : "Secretary - Jennifer Hernandez",
+                            "value" : ""
                         },
                         {
-                            "name" : "Maintenance Officer",
-                            "value" : "Lucas Sottile"
+                            "name" : "Maintenance Officer - Lucas Sottile",
+                            "value" : ""
                         },
                         {
-                            "name" : "Training Officer",
-                            "value" : "Adam Winters"
+                            "name" : "Training Officer - Adam Winters",
+                            "value" : ""
                         },
                         {
-                            "name" : "Activities Officer",
-                            "value" : "Brett Inman"
+                            "name" : "Activities Officer - Brett Inman",
+                            "value" : ""
                         },
                         {
-                            "name" : "Financial Officer",
-                            "value" : "Steven Bloomfield"
+                            "name" : "Financial Officer - Steven Bloomfield",
+                            "value" : ""
                         }
                     ]
                 };
