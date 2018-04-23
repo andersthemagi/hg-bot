@@ -94,14 +94,14 @@ var mcoCommands = [
                     "Inspection Arms"
 ];
 
-var officerRoster = "Victoria Jackson     - President \n" +
+var officerRoster = "Victoria Jackson        - President \n" +
                     "Andres Sepulveda     - Vice President \n" +
-                    "Mikeila McCarthy     - Protocol Officer \n" +
+                    "Mikeila McCarthy      - Protocol Officer \n" +
                     "Jennifer Hernandez   - Secretary \n" +
-                    "Lucas Sottile           - Maintenance Officer \n" +
-                    "Adam Winters         - Training Commander \n" +
-                    "Brett Inman           - Activities Officer \n" +
-                    "Steven Bloomfield    - Financial Officer \n";
+                    "Lucas Sottile               - Maintenance Officer \n" +
+                    "Adam Winters           - Training Commander \n" +
+                    "Brett Inman              - Activities Officer \n" +
+                    "Steven Bloomfield      - Financial Officer \n";
 
 var members = "";
 var toReturn = "";
