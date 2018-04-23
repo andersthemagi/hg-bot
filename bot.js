@@ -468,35 +468,35 @@ bot.on("message", function(message) {
                     "fields" : [
                         {
                             "name" : "President - Victoria Jackson",
-                            "value" : ""
+                            "value" : " "
                         },
                         {
                             "name": "Vice President - Andres Sepulveda",
-                            "value" : ""
+                            "value" : " "
                         },
                         {
                             "name" : "Protocol Officer - Mikeila McCarthy",
-                            "value" : ""
+                            "value" : " "
                         },
                         {
                             "name" : "Secretary - Jennifer Hernandez",
-                            "value" : ""
+                            "value" : " "
                         },
                         {
                             "name" : "Maintenance Officer - Lucas Sottile",
-                            "value" : ""
+                            "value" : " "
                         },
                         {
                             "name" : "Training Officer - Adam Winters",
-                            "value" : ""
+                            "value" : " "
                         },
                         {
                             "name" : "Activities Officer - Brett Inman",
-                            "value" : ""
+                            "value" : " "
                         },
                         {
                             "name" : "Financial Officer - Steven Bloomfield",
-                            "value" : ""
+                            "value" : " "
                         }
                     ]
                 };
